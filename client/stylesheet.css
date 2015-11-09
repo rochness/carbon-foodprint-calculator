@@ -1,0 +1,75 @@
+.header {
+	color: black;
+	padding: 50px;
+	text-align: center;
+	z-index: 2;
+}
+
+h1{
+	font-family: 'Didact Gothic', sans-serif;
+	font-size: 64px;
+}
+h2{
+	font-family: 'Didact Gothic', sans-serif;
+	font-size: 32px;
+	text-align: left;
+}
+
+h3{
+	font-family: 'Didact Gothic', sans-serif;
+	color: #808080;
+	font-size: 24px;
+	border-bottom-style: solid;
+	border-bottom-width: 1px;
+	border-bottom-color: gray;
+	padding-bottom: 5px;
+}
+
+form, p{
+	font-family: 'Arimo', sans-serif;
+	font-size: 18px;
+}
+
+input {
+	font-color: grey;
+	font-size: 16px;
+	width: 100%;
+}
+
+.container {
+	margin-left: 75px;
+	margin-right: 75px;
+}
+
+.calc_header{
+	padding-top: 25px;
+	padding-bottom: 25px;
+}
+#select_ingreds{
+	border-right-style: solid;
+	border-right-width: 1px;
+	border-right-color: black;
+	padding-top: 50px;
+	padding-bottom: 100px;
+	padding-right: 30px;
+}
+
+#foodprint{
+	padding-bottom: 100px;
+}
+
+.headertext{
+	position: absolute;
+	text-align: right;
+	top:215px;
+	right:130px;
+	z-index: 3;
+}
+
+.breakdown{
+	min-height: 125px;
+}
+
+#next{
+	float: right; s
+}

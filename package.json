@@ -1,0 +1,19 @@
+{
+  "name": "calculator",
+  "version": "0.0.0",
+  "description": "",
+  "main": "app.js",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.4.3",
+    "express": "^4.4.5",
+    "jwt-simple": "^0.2.0",
+    "mongodb": "^2.0.48",
+    "mongoose": "^4.1.0",
+    "morgan": "^1.1.1",
+    "passport": "^0.2.0",
+    "passport-local": "^1.0.0",
+    "q": "^1.0.1",
+    "request": "^2.36.0"
+  }
+}
