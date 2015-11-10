@@ -1,6 +1,6 @@
-angular.module('calculator.calculate', [])
+angular.module('calculator.userIngreds', [])
 
-.controller('CalcController', function ($scope, Ingredients) {
+.controller('UserIngredController', function ($scope, Ingredients) {
   
   $scope.ingredient = {};
   $scope.quantity = 0;
@@ -9,5 +9,9 @@ angular.module('calculator.calculate', [])
   $scope.setIngred = function (input) {
     $scope.ingredient = Ingredients.getIngredByName(input); 
   };  
+
+  $scope.calculate = function(){
+    $scope.total = $scope.ingredient.emissions * $scope.quantity;
+  };
 
 });

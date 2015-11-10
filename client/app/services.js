@@ -63,14 +63,14 @@ angular.module('calculator.services', [])
     rice: rice 
   };
 
-  var ingredList = {}; 
+  var userIngredients = []; 
 
   var getAll = function() {
     return ingredList;
   }
 
-  var getIngredByName = function(name) {
-    if(ingredDB(name.toLowerCase())){
+  var searchIngred = function(name) {
+    if(ingredDB[name.toLowerCase()]){
       return ingredDB[name.toLowerCase()];
     } else {
       console.log("Ingredient not in database");
@@ -79,12 +79,12 @@ angular.module('calculator.services', [])
   };
 
   var addIngredient = function (ingred) {
-    ingredList[(ingred.name).toLowerCase()] = ingred;
+    userIngredients.push(ingred);
   };
 
   return {
     getAll: getAll,
-    getIngredByName: getIngredByName,
+    searchIngred: searchIngred,
     addIngredient: addIngredient
   };
 
