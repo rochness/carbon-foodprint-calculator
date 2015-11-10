@@ -33,12 +33,20 @@
             <form name="searchForm" ng-submit="setIngred()"> 
             Enter an ingredient: 
             <input type="text" name="ingred" ng-model="input" placeholder= "Type the name of an ingredient..."></form>
-            <form name="quantityForm" ng-if="$scope.ingredient !== null && searchForm.$submitted === true" novalidate> 
-            Enter quantity (in pounds):
-            <input type="number" name="quantity" ng-model="item.quantity">
-            <button class="cancel_button" ng-if="searchForm.$dirty" ng-click="reset(); searchForm.$setPristine(); quantityForm.$setPristine()"> Cancel </button>
-            <button class="add_button" ng-if="searchForm.$dirty" ng-click="addToList();searchForm.$setPristine(); quantityForm.$setPristine()"> Add ingredient </button>
-            </form>
+            <div ng-switch="found">
+              <div ng-switch-when="true">
+                <form name="quantityForm" ng-if="$scope.ingredient !== null && searchForm.$submitted === true" novalidate> 
+                Enter quantity (in pounds):
+                <input type="number" name="quantity" ng-model="item.quantity">
+                <button class="cancel_button" ng-if="searchForm.$dirty" ng-click="reset(); searchForm.$setPristine(); quantityForm.$setPristine()"> Cancel </button>
+                <button class="add_button" ng-if="searchForm.$dirty" ng-click="addToList();searchForm.$setPristine(); quantityForm.$setPristine()"> Add ingredient </button>
+                </form>
+              </div>
+              <div ng-switch-when="false">
+                <span>Sorry, we could not find your ingredient in our database. Try searching by category or enter another ingredient </span>
+                <button class="ok_button" ng-click="reset(); searchForm.$setPristine(); toggleFound()"> OK </button>
+              </div>
+            </div>
           </div>
           <div class = "browse">
             <div class = 'or'> OR </div>

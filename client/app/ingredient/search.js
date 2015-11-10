@@ -5,14 +5,25 @@ angular.module('calculator.search', [])
   $scope.item = {};
   $scope.categories = Ingredients.getCategories();
   $scope.selected = false;
+  $scope.found = true;
   
+  $scope.toggleFound = function(){
+    if($scope.found === false){
+      $scope.found = true;
+    } else {
+      $scope.found = false;
+    }
+  };
+
   $scope.setIngred = function (ingred) {
     if(!ingred){
       $scope.item.ingredient = Ingredients.searchIngred($scope.input); 
     } else {
       $scope.item.ingredient = ingred;
     }
-    console.log($scope.item.ingredient.name);
+    if($scope.item.ingredient === null){
+      $scope.toggleFound();
+    } 
   };
 
   $scope.reset = function (){
