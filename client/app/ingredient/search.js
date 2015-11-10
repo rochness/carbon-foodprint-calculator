@@ -4,9 +4,14 @@ angular.module('calculator.search', [])
   
   $scope.item = {};
   $scope.categories = Ingredients.getCategories();
+  $scope.selected = false;
   
-  $scope.setIngred = function () {
-    $scope.item.ingredient = Ingredients.searchIngred($scope.input); 
+  $scope.setIngred = function (ingred) {
+    if(!ingred){
+      $scope.item.ingredient = Ingredients.searchIngred($scope.input); 
+    } else {
+      $scope.item.ingredient = ingred;
+    }
     console.log($scope.item.ingredient.name);
   };
 
@@ -24,4 +29,13 @@ angular.module('calculator.search', [])
   $scope.allIngreds = function(){
     return Ingredients.allIngredients();
   };
+
+  $scope.toggleSelected = function() {
+    if($scope.selected === false){
+      $scope.selected = true;
+    } else {
+      $scope.selected = false;
+    }
+    console.log($scope.selected);
+  }
 });

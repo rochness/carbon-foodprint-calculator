@@ -42,8 +42,9 @@
             </div>
             <div class = "browse">
               <div class = 'or'> OR </div>
-              <div class="selectCat"> Select from a category: </div> 
-              <ul class="nav nav-stacked">
+              <div class="selectCat"> Search by category: </div>
+              <div ng-switch="selected"> 
+              <ul class="nav nav-stacked" ng-switch-when='false'>
                 <li ng-repeat="category in categories.slice(0,4)">
                   <div class="btn-group dropright">
                     <a class="btn dropdown-toggle" data-toggle="dropdown" href="#" ng-model="category">
@@ -51,7 +52,7 @@
                     <span class="glyphicon glyphicon-chevron-right"></span>
                     </a>
                     <ul class="dropdown-menu">
-                      <li ng-repeat ="(ingred, ingObj) in allIngreds() | categoryFilter: category"><a href="#">{{ingObj.name}}</a></li>
+                      <li ng-repeat ="(ingred, ingObj) in allIngreds() | categoryFilter: category"><a ng-model="input" ng-click="setIngred(ingObj); toggleSelected()">{{ingObj.name}}</a></li>
                       <!-- <li><a href="#">Choice1</a></li>
                       <li><a href="#">Choice2</a></li>
                       <li><a href="#">Choice3</a></li>
@@ -61,6 +62,15 @@
                   </div>
                 </li>
               </ul>
+              <div class="browse_quantity" ng-switch-when='true'>
+                <div class="browse_selection"> Your selection: {{item.ingredient.name}} </div>
+                <form name="quantityForm" novalidate> 
+                Enter quantity (in pounds):
+                <input type="number" name="quantity" ng-model="item.quantity">
+                <button class="add_button" ng-click="addToList(); quantityForm.$setPristine(); toggleSelected()"> Add ingredient </button>
+                </form>
+              </div>
+            </div>
           </div>
         </div>
       </div>

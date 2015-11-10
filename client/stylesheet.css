@@ -43,7 +43,7 @@ input {
 }
 
 .row {
-	margin: 0 50px;
+	margin: 0 55px;
 }
 
 .calc_header{
@@ -120,7 +120,9 @@ form{
 	margin-bottom: 10px;	
 }
 
-.selectCat {
+.selectCat, .browse_selection {
 	font-family: 'Arimo', sans-serif;
 	font-size: 18px;
+	margin: 10px auto;
 }
+
