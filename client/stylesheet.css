@@ -42,8 +42,12 @@ input {
 	width: 100%;
 }
 
-.row {
+#wrapper {
 	margin: 0 55px;
+}
+
+.row{
+	margin: 0 10px;
 }
 
 .calc_header{

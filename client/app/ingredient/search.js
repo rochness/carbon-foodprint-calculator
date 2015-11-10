@@ -17,11 +17,12 @@ angular.module('calculator.search', [])
 
   $scope.reset = function (){
     $scope.item = {};
+    $('input').val('');
   };  
 
   $scope.addToList = function() {
     Ingredients.addIngredient($scope.item);
-    $('input').val('');
+    // $('input').val('');
     $scope.reset();
     console.log($scope.item);
   };
