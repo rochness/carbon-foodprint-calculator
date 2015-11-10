@@ -3,7 +3,22 @@ angular.module('calculator', [
   'calculator.search',
   'calculator.userIngreds',
   'ngRoute'
-]);
+]).filter('categoryFilter', function(){
+    return function(input, category) {
+      if (!input) return input;
+      if (!category) return input;
+      var expected = ('' + category).toLowerCase();
+      var result = {};
+      angular.forEach(input, function(value, key) {
+        var actualCategory = (value.category).toLowerCase();
+        if (actualCategory === expected) {
+          result[key] = value;
+        }
+      });
+      console.log('category: ' + category + ' ' + result);
+      return result;
+    };
+  });
 // .config(function ($routeProvider, $httpProvider) {
 //   $routeProvider
 //     .when('/enter_ingred', {

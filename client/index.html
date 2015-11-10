@@ -46,16 +46,17 @@
               <ul class="nav nav-stacked">
                 <li ng-repeat="category in categories.slice(0,4)">
                   <div class="btn-group dropright">
-                    <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+                    <a class="btn dropdown-toggle" data-toggle="dropdown" href="#" ng-model="category">
                    {{category}}
                     <span class="glyphicon glyphicon-chevron-right"></span>
                     </a>
                     <ul class="dropdown-menu">
-                      <li><a href="#">Choice1</a></li>
+                      <li ng-repeat ="(ingred, ingObj) in allIngreds() | categoryFilter: category"><a href="#">{{ingred}}</a></li>
+                      <!-- <li><a href="#">Choice1</a></li>
                       <li><a href="#">Choice2</a></li>
                       <li><a href="#">Choice3</a></li>
                       <li class="divider"></li>
-                      <li><a href="#">Choice..</a></li>
+                      <li><a href="#">Choice..</a></li> -->
                     </ul>
                   </div>
                 </li>

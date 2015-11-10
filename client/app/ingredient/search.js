@@ -20,5 +20,8 @@ angular.module('calculator.search', [])
     $scope.reset();
     console.log($scope.item);
   };
-  
+
+  $scope.allIngreds = function(){
+    return Ingredients.allIngredients();
+  };
 });
