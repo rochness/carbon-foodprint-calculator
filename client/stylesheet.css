@@ -80,8 +80,18 @@ td {
 	font-size: 18px;
 
 }
+
+.qty_input {
+	width: 40px;
+}
 .emissions {
 	text-align: right;
+}
+
+.remove_button {
+	height: 90%;
+	font-size: 10px;
+	vertical-align: center;
 }
 
 form{

@@ -63,16 +63,7 @@ angular.module('calculator.services', [])
     rice: rice 
   };
 
-  var userIngredients = [
-    {
-      ingredient: chicken,
-      quantity: 10
-    },
-    {
-      ingredient: potato,
-      quantity: 5
-    }
-    ]; 
+  var userIngredients = {};
 
   var getUserIngreds = function() {
     return userIngredients;
@@ -88,14 +79,19 @@ angular.module('calculator.services', [])
   };
 
   var addIngredient = function (ingred) {
-    userIngredients.push(ingred);
+    userIngredients[ingred.ingredient.name] = ingred;
     $rootScope.$broadcast('added-ingred');
+  };
+
+  var removeIngred = function(ingred) {
+    delete userIngredients[ingred.ingredient.name];
   };
 
   return {
     getUserIngreds: getUserIngreds,
     searchIngred: searchIngred,
-    addIngredient: addIngredient
+    addIngredient: addIngredient,
+    removeIngred: removeIngred
   };
 
 });

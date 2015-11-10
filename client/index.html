@@ -48,11 +48,11 @@
           <div id="foodprint">
           <h3>Emissions breakdown</h3>
           <div class = "breakdown" ng-controller = "UserIngredController">
-          <!-- Ingredients array: {{Ingredients.getUserIngreds()}} -->
           <table>
             <tr ng-repeat= "ingred in getUserIngreds()">
-              <td> {{ingred.quantity}} pounds of {{ingred.ingredient.name}} </td>
+              <td>{{ingred.quantity}} pounds of {{ingred.ingredient.name}} </td>
               <td class ="emissions"> {{subTotal(ingred.quantity, ingred.ingredient.emissions)}} kg CO2e </td>
+              <td class="emissions"> <button class="remove_button" value="remove" ng-click="remove(ingred)">Remove</button></td>
             </tr>
           </table>
           

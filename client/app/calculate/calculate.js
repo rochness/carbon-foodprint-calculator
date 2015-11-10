@@ -16,8 +16,8 @@ angular.module('calculator.userIngreds', [])
   $scope.total = function(){
     var total = 0;
     var ingredients = Ingredients.getUserIngreds();
-    for(var i = 0; i < ingredients.length; i++){
-      total += ingredients[i].quantity * ingredients[i].ingredient.emissions;
+    for(var key in ingredients){
+      total += ingredients[key].quantity * ingredients[key].ingredient.emissions;
     }
     return Math.ceil(total * (1/2.2046) * 100)/100;
   };
@@ -32,6 +32,10 @@ angular.module('calculator.userIngreds', [])
 
   $scope.costs = function(qty, emiss){
     return Math.ceil($scope.total() * (1/4) * 100)/100;
+  };
+
+  $scope.remove = function(ingredient){
+    Ingredients.removeIngred(ingredient);
   };
 
   $scope.getUserIngreds(); 
