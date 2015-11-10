@@ -76,6 +76,9 @@ input {
 
 td {
 	width: 30%;
+	font-family: 'Arimo', sans-serif;
+	font-size: 18px;
+
 }
 .emissions {
 	text-align: right;

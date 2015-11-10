@@ -34,10 +34,11 @@
               <form name="searchForm" ng-submit="setIngred()"> 
               Enter an ingredient: 
               <input type="text" name="ingred" ng-model="input" placeholder= "Type the name of an ingredient..."></form>
-              <form name="quantityForm" ng-if="$scope.ingredient !== null && searchForm.$submitted === true"> 
+              <form name="quantityForm" ng-if="$scope.ingredient !== null && searchForm.$submitted === true" novalidate> 
               Enter quantity:
-              <input type="number" name="quantity" ng-model="item.quantity"></form>
-              <button ng-if="searchForm.$dirty" ng-click="addToList()"> Add ingredient </button>
+              <input type="number" name="quantity" ng-model="item.quantity">
+              <button ng-if="searchForm.$dirty" ng-click="addToList();searchForm.$setPristine(); quantityForm.$setPristine()"> Add ingredient </button>
+              </form>
             </div>
           </div>
             
