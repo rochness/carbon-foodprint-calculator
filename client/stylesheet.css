@@ -80,3 +80,7 @@ td {
 .emissions {
 	text-align: right;
 }
+
+form{
+	margin-bottom: 10px;
+}

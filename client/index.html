@@ -19,7 +19,7 @@
 
   <body>
     <div class = "header">
-      <h1>Foodprint Calculator</h1>
+      <h1>Carbon Foodprint Calculator</h1>
     </div>
     <div>
       <div class= "container"> 
@@ -49,20 +49,21 @@
           <div class = "breakdown" ng-controller = "UserIngredController">
           <!-- Ingredients array: {{Ingredients.getUserIngreds()}} -->
           <table>
-            <tr ng-repeat= "ingred in Ingredients.getUserIngreds()">
+            <tr ng-repeat= "ingred in getUserIngreds()">
               <td> {{ingred.quantity}} pounds of {{ingred.ingredient.name}} </td>
-              <td class ="emissions"> {{ingred.quantity * ingred.ingredient.emissions}} kg CO2e </td>
+              <td class ="emissions"> {{subTotal(ingred.quantity, ingred.ingredient.emissions)}} kg CO2e </td>
             </tr>
           </table>
-          </div>
+          
           <h3>Total</h3>
-          <p>Your carbon foodprint is 0kg of CO2e. That is the equivalent of driving 0 miles in a car.</p>
+          <p>Your carbon foodprint is {{total()}} kg of CO2e. That is the equivalent of driving {{miles()}} miles in a car.</p>
           <p></p>
           <p></p>
           <h3>Offset</h3>
-          <p>You can purchase $0 of carbon offsets to balance your emissions.</p>
+          <p>You can purchase ${{costs()}} of carbon offsets to balance your emissions.</p>
           <p></p>
           <p></p>
+          </div>
           </div>
         </div>
       </div>
