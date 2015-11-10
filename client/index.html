@@ -46,9 +46,14 @@
           <div class="calc_header"><h2>Your CARBON FOODPRINT </h2></div>
           <div id="foodprint">
           <h3>Emissions breakdown</h3>
-          <div class = "breakdown">
-          <p style="font-style: italic;">Enter ingredients on the left to see the impact of individual ingredients</p>
-          <br>
+          <div class = "breakdown" ng-controller = "UserIngredController">
+          <!-- Ingredients array: {{Ingredients.getUserIngreds()}} -->
+          <table>
+            <tr ng-repeat= "ingred in Ingredients.getUserIngreds()">
+              <td> {{ingred.quantity}} pounds of {{ingred.ingredient.name}} </td>
+              <td class ="emissions"> {{ingred.quantity * ingred.ingredient.emissions}} kg CO2e </td>
+            </tr>
+          </table>
           </div>
           <h3>Total</h3>
           <p>Your carbon foodprint is 0kg of CO2e. That is the equivalent of driving 0 miles in a car.</p>

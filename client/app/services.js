@@ -1,6 +1,6 @@
 angular.module('calculator.services', [])
 
-.factory('Ingredients', function ($http) {
+.factory('Ingredients', function ($rootScope, $http) {
   // Your code here
   
   var ribeye = {
@@ -63,10 +63,19 @@ angular.module('calculator.services', [])
     rice: rice 
   };
 
-  var userIngredients = []; 
+  var userIngredients = [
+    {
+      ingredient: chicken,
+      quantity: 10
+    },
+    {
+      ingredient: potato,
+      quantity: 5
+    }
+    ]; 
 
-  var getAll = function() {
-    return ingredList;
+  var getUserIngreds = function() {
+    return userIngredients;
   }
 
   var searchIngred = function(name) {
@@ -80,10 +89,11 @@ angular.module('calculator.services', [])
 
   var addIngredient = function (ingred) {
     userIngredients.push(ingred);
+    $rootScope.$broadcast('added-ingred');
   };
 
   return {
-    getAll: getAll,
+    getUserIngreds: getUserIngreds,
     searchIngred: searchIngred,
     addIngredient: addIngredient
   };

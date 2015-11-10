@@ -1,17 +1,21 @@
 angular.module('calculator.userIngreds', [])
 
 .controller('UserIngredController', function ($scope, Ingredients) {
-  
-  $scope.ingredient = {};
-  $scope.quantity = 0;
-  $scope.total = 0;
-  
-  $scope.setIngred = function (input) {
-    $scope.ingredient = Ingredients.getIngredByName(input); 
-  };  
+  $scope.Ingredients = Ingredients;
 
-  $scope.calculate = function(){
-    $scope.total = $scope.ingredient.emissions * $scope.quantity;
+  $scope.getUserIngreds = function(){
+    return Ingredients.getUserIngreds();
+    console.log("user ingredients: ", $scope.ingredients);
   };
+
+  $scope.$on('added-ingred', function(){
+    $scope.getUserIngreds();
+  });
+
+  // $scope.calculate = function(){
+  //   $scope.total = $scope.ingredient.emissions * $scope.quantity;
+  // };
+
+  $scope.getUserIngreds(); 
 
 });

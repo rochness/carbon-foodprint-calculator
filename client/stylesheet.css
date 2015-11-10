@@ -71,5 +71,12 @@ input {
 }
 
 #next{
-	float: right; s
+	float: right;
+}
+
+td {
+	width: 30%;
+}
+.emissions {
+	text-align: right;
 }
