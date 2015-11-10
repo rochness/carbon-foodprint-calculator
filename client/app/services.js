@@ -4,7 +4,7 @@ angular.module('calculator.services', [])
   // Your code here
   
   var ribeye = {
-    name: 'Ribeye, Rib Roast',
+    name: 'Ribeye/ Rib Roast',
     category: 'Beef',
     emissions: '39.83',
   };

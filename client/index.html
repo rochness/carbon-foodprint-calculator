@@ -22,12 +22,12 @@
       <h1>Carbon Foodprint Calculator</h1>
     </div>
     <div>
-      <div class= "container"> 
+      <div class= "row"> 
         <div class = "col-sm-6">
           <div class="calc_header">
             <h2>Intro Text...</h2>
-            <p>Nequi dollendae vel iliscimi, cus molupta sperupt aut pro ommoluptati quiam 
-            </p>
+            <span>Nequi dollendae vel iliscimi, cus molupta sperupt aut pro ommoluptati quiam 
+            </span>
           </div>
           <div class = "select_ingreds" ng-controller = "SearchController">
             <div class = "enter_ingred">
@@ -51,7 +51,7 @@
                     <span class="glyphicon glyphicon-chevron-right"></span>
                     </a>
                     <ul class="dropdown-menu">
-                      <li ng-repeat ="(ingred, ingObj) in allIngreds() | categoryFilter: category"><a href="#">{{ingred}}</a></li>
+                      <li ng-repeat ="(ingred, ingObj) in allIngreds() | categoryFilter: category"><a href="#">{{ingObj.name}}</a></li>
                       <!-- <li><a href="#">Choice1</a></li>
                       <li><a href="#">Choice2</a></li>
                       <li><a href="#">Choice3</a></li>

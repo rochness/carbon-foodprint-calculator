@@ -15,7 +15,6 @@ angular.module('calculator', [
           result[key] = value;
         }
       });
-      console.log('category: ' + category + ' ' + result);
       return result;
     };
   });
