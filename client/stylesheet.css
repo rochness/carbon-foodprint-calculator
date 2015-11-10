@@ -94,6 +94,27 @@ td {
 	vertical-align: center;
 }
 
+.add_button {
+	margin-top: 10px;
+}
+
 form{
-	margin-bottom: 10px;
+	margin-bottom: 20px;
+}
+
+.dropdown-menu {
+  top: 0;
+  left: 100%;
+}
+
+.or {
+	font-family: 'Arimo', sans-serif;
+	font-size: 20px;
+	margin-top: 10px;
+	margin-bottom: 10px;	
+}
+
+.selectCat {
+	font-family: 'Arimo', sans-serif;
+	font-size: 18px;
 }

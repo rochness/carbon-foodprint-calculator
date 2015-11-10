@@ -3,6 +3,7 @@ angular.module('calculator.search', [])
 .controller('SearchController', function ($scope, Ingredients) {
   
   $scope.item = {};
+  $scope.categories = Ingredients.getCategories();
   
   $scope.setIngred = function () {
     $scope.item.ingredient = Ingredients.searchIngred($scope.input); 

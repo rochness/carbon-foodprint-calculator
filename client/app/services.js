@@ -64,10 +64,28 @@ angular.module('calculator.services', [])
   };
 
   var userIngredients = {};
+  var categories = [
+    'Beef',
+    'Lamb',
+    'Pig',
+    'Poutry',
+    'Other Meat',
+    'Fish',
+    'Seafood',
+    'Dairy',
+    'Fruit',
+    'Vegetables',
+    'Grain/Legume',
+    'Miscellaneous'
+  ];
 
   var getUserIngreds = function() {
     return userIngredients;
-  }
+  };
+
+  var getCategories = function () {
+    return categories;
+  };
 
   var searchIngred = function(name) {
     if(ingredDB[name.toLowerCase()]){
@@ -91,7 +109,8 @@ angular.module('calculator.services', [])
     getUserIngreds: getUserIngreds,
     searchIngred: searchIngred,
     addIngredient: addIngredient,
-    removeIngred: removeIngred
+    removeIngred: removeIngred,
+    getCategories: getCategories
   };
 
 });

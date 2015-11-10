@@ -23,28 +23,50 @@
     </div>
     <div>
       <div class= "container"> 
-        <div class = "col-sm-12">
+        <div class = "col-sm-6">
           <div class="calc_header">
             <h2>Intro Text...</h2>
-            <p>Nequi dollendae vel iliscimi, cus molupta sperupt aspidem explaud iciditi sedArum sita des aute cor andi ut magnate ndenda velenis nostrume aut pro ommoluptati quiam 
+            <p>Nequi dollendae vel iliscimi, cus molupta sperupt aut pro ommoluptati quiam 
             </p>
           </div>
-          <div class = "select_ingreds">
-            <div class = "enter_ingred" ng-controller = "SearchController">
+          <div class = "select_ingreds" ng-controller = "SearchController">
+            <div class = "enter_ingred">
               <form name="searchForm" ng-submit="setIngred()"> 
               Enter an ingredient: 
               <input type="text" name="ingred" ng-model="input" placeholder= "Type the name of an ingredient..."></form>
               <form name="quantityForm" ng-if="$scope.ingredient !== null && searchForm.$submitted === true" novalidate> 
-              Enter quantity:
+              Enter quantity (in pounds):
               <input type="number" name="quantity" ng-model="item.quantity">
-              <button ng-if="searchForm.$dirty" ng-click="addToList();searchForm.$setPristine(); quantityForm.$setPristine()"> Add ingredient </button>
+              <button class="add_button" ng-if="searchForm.$dirty" ng-click="addToList();searchForm.$setPristine(); quantityForm.$setPristine()"> Add ingredient </button>
               </form>
             </div>
+            <div class = "browse">
+              <div class = 'or'> OR </div>
+              <div class="selectCat"> Select from a category: </div> 
+              <ul class="nav nav-stacked">
+                <li ng-repeat="category in categories.slice(0,4)">
+                  <div class="btn-group dropright">
+                    <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+                   {{category}}
+                    <span class="glyphicon glyphicon-chevron-right"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li><a href="#">Choice1</a></li>
+                      <li><a href="#">Choice2</a></li>
+                      <li><a href="#">Choice3</a></li>
+                      <li class="divider"></li>
+                      <li><a href="#">Choice..</a></li>
+                    </ul>
+                  </div>
+                </li>
+              </ul>
           </div>
+        </div>
+      </div>
             
         
-        <div class ="col-sm-12">
-          <div class="calc_header"><h2>Your CARBON FOODPRINT </h2></div>
+        <div class ="col-sm-6">
+          <div class="calc_header"><h2>Your Ingredients </h2></div>
           <div id="foodprint">
           <h3>Emissions breakdown</h3>
           <div class = "breakdown" ng-controller = "UserIngredController">
