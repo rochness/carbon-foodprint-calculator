@@ -2,6 +2,7 @@ angular.module('calculator', [
   'calculator.services',
   'calculator.search',
   'calculator.userIngreds',
+  'angular.filter',
   'ngRoute'
 ]).filter('categoryFilter', function(){
     return function(input, category) {

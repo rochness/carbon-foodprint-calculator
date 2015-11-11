@@ -13,6 +13,11 @@ angular.module('calculator.search', [])
     } else {
       $scope.found = false;
     }
+    console.log($scope.input);
+  };
+
+  $scope.setInput = function(newInput){
+    $scope.input = newInput;
   };
 
   $scope.setIngred = function (ingred) {
@@ -28,7 +33,8 @@ angular.module('calculator.search', [])
 
   $scope.reset = function (){
     $scope.item = {};
-    $('input').val('');
+    // $('input').val('');
+    $scope.input = '';
   };  
 
   $scope.addToList = function() {
