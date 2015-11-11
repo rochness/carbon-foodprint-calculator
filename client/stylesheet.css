@@ -53,6 +53,11 @@ button {
 	font-size: 14px;
 }
 
+.btn {
+	font-size: 18px;
+	font-family: 'Arimo', sans-serif;
+}
+
 #wrapper {
 	margin: 0 55px;
 }
@@ -161,4 +166,10 @@ form{
 .modalText {
 	position: relative;
 	float: left;
+}
+
+.emphasize {
+	color: #337ab7;
+	font-weight: bold;
+	font-size: 18px;
 }

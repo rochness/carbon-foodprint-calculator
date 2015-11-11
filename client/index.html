@@ -49,7 +49,7 @@
                 <p>Sorry, we could not find your exact ingredient in our database. Try searching by category, entering another ingredient, or selecting a best match from below: </p>
                 <ul>
                   <li ng-repeat="(ingred, ingObj) in allIngreds() | fuzzy:input">
-                  <a ng-click= "setIngred(ingObj);setInput(item.ingredient.name);toggleFound()">{{ingObj.name}}</a>
+                  <a class ="menu_item" ng-click= "setIngred(ingObj);setInput(item.ingredient.name);toggleFound()">{{ingObj.name}}</a>
                   </li>
                 </ul>
                 
@@ -162,11 +162,11 @@
           
           
           <h3>Total</h3>
-          <p>Your carbon foodprint is {{total()}} kg of CO<sub>2</sub>e. That is the equivalent of driving {{miles()}} miles in a car.</p>
+          <p>Your carbon foodprint is <span class="emphasize">{{total()}} kg of CO<sub>2</sub>e. </span>That is the equivalent of driving <span class="emphasize">{{miles()}} miles </span>in a car.</p>
           <p></p>
           <p></p>
           <h3>Offset</h3>
-          <p>You can purchase ${{costs()}} of carbon offsets to balance your emissions.</p>
+          <p>You can purchase <span class="emphasize"> ${{costs()}} </span> of carbon offsets to balance your emissions.</p>
           <p></p>
           <p></p>
           </div>
