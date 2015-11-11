@@ -20,11 +20,12 @@
   <body>
     <div class = "header">
       <h1>Carbon Foodprint Calculator</h1>
+      <span>Knowing is half the battle</span>
     </div>
     <div class= "row" id="wrapper"> 
       <div class = "col-sm-6">
         <div class="calc_header">
-          <h2>Intro Text...</h2>
+          <h2>Look up an ingredient</h2>
           <span>Nequi dollendae vel iliscimi, cus molupta sperupt aut pro ommoluptati quiam 
           </span>
         </div>
@@ -123,13 +124,13 @@
       </div>
         
         <div class ="col-sm-6">
-          <div class="calc_header"><h2>Your Ingredients </h2></div>
+          <div class="calc_header"><h2>Your ingredients </h2></div>
           <div id="foodprint">
           <h3>Emissions breakdown</h3>
           <div class = "breakdown" ng-controller = "UserIngredController">
           <table>
             <tr ng-repeat= "ingred in getUserIngreds()">
-              <td>{{ingred.quantity}} pounds of {{ingred.ingredient.name}} </td>
+              <td><form class="table_qty"><input type="number" ng-model="ingred.quantity"></form> pounds of {{ingred.ingredient.name}} </td>
               <td class ="emissions"> {{subTotal(ingred.quantity, ingred.ingredient.emissions)}} kg CO<sub>2</sub>e </td>
               <td class="emissions"> 
                 <button type="button" data-toggle="modal" ng-attr-data-target={{'#'+ingred.ingredient.name+'modal'}}>Update</button>

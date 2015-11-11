@@ -53,6 +53,12 @@ button {
 	font-size: 14px;
 }
 
+.header span {
+	font-size: 20px;
+	font-family: 'Arimo', sans-serif;
+	font-style: italic;
+}
+
 .btn {
 	font-size: 18px;
 	font-family: 'Arimo', sans-serif;
@@ -70,6 +76,7 @@ button {
 	padding-top: 25px;
 	padding-bottom: 25px;
 }
+
 #select_ingreds{
 	border-right-style: solid;
 	border-right-width: 1px;
@@ -172,4 +179,15 @@ form{
 	color: #337ab7;
 	font-weight: bold;
 	font-size: 18px;
+}
+
+.table_qty {
+	width: 40px;
+	position: relative;
+	float: left;
+	margin-right: 10px;
+}
+
+.table_qty input{
+	width: 100%;
 }
