@@ -1,3 +1,6 @@
+@font-face { font-family: Proxima Nova; src: url('./fonts/Proxima-Nova-Regular.otf'); }
+@font-face { font-family: Proxima Nova; font-weight: bold; src: url('./fonts/Proxima-Nova-Bold.otf');}
+
 .header {
 	color: black;
 	padding: 30px;
@@ -5,19 +8,18 @@
 	z-index: 2;
 	margin-bottom: 10px;
 }
-
+h1, h2, h3, h4 {
+	font-family: Proxima Nova;
+}
 h1{
-	font-family: 'Didact Gothic', sans-serif;
-	font-size: 64px;
+	font-size: 32px;
 }
 h2{
-	font-family: 'Didact Gothic', sans-serif;
-	font-size: 32px;
+	font-size: 24px;
 	text-align: left;
 }
 
 h3{
-	font-family: 'Didact Gothic', sans-serif;
 	color: #808080;
 	font-size: 24px;
 	border-bottom-style: solid;
@@ -27,14 +29,13 @@ h3{
 }
 
 h4{
-	font-family: 'Didact Gothic', sans-serif;
 	font-size: 20px;
 	text-align: left;
 }
 
-form, p{
-	font-family: 'Arimo', sans-serif;
-	font-size: 18px;
+form, p, span, input, button, .btn, td, .or, .selectCat, .browse_selection {
+	font-family: Proxima Nova;
+	font-size: 14px;
 }
 
 span {
@@ -44,24 +45,22 @@ span {
 
 input {
 	font-color: grey;
-	font-size: 16px;
+	font-size: 14px;
 	width: 40%;
 	position: relative;
 }
 
 button {
-	font-size: 14px;
+	font-size: 12px;
 }
 
 .header span {
 	font-size: 20px;
-	font-family: 'Arimo', sans-serif;
 	font-style: italic;
 }
 
 .btn {
-	font-size: 18px;
-	font-family: 'Arimo', sans-serif;
+	font-size: 12px;
 }
 
 #wrapper {
@@ -74,7 +73,17 @@ button {
 
 .calc_header{
 	padding-top: 25px;
-	padding-bottom: 25px;
+	padding-bottom: 15px;
+	border-bottom-style: solid;
+	border-bottom-width: 2px;
+	border-bottom-color: #bfbfbf; /*gray*/
+	margin-bottom: 30px;
+}
+
+.ingred_input {
+	height: 50px;
+	width: 80%;
+	padding-left: 10px;
 }
 
 #select_ingreds{
@@ -108,8 +117,7 @@ button {
 
 td {
 	width: 30%;
-	font-family: 'Arimo', sans-serif;
-	font-size: 18px;
+	font-size: 14px;
 
 }
 
@@ -122,7 +130,7 @@ td {
 
 .remove_button {
 	height: 18px;
-	font-size: 12px;
+	font-size: 10px;
 	vertical-align: center;
 }
 
@@ -141,15 +149,15 @@ form{
 }
 
 .or {
-	font-family: 'Arimo', sans-serif;
+	/*font-family: 'Arimo', sans-serif;*/
 	font-size: 20px;
 	margin-top: 10px;
-	margin-bottom: 10px;	
+	margin-bottom: 10px;
 }
 
 .selectCat, .browse_selection {
-	font-family: 'Arimo', sans-serif;
-	font-size: 18px;
+	/*font-family: 'Arimo', sans-serif;*/
+	font-size: 16px;
 	margin: 10px auto;
 }
 
@@ -178,7 +186,7 @@ form{
 .emphasize {
 	color: #337ab7;
 	font-weight: bold;
-	font-size: 18px;
+	font-size: 14px;
 }
 
 .table_qty {
