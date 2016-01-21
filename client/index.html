@@ -127,6 +127,37 @@
           <div id="foodprint">
           <div class = "breakdown" ng-controller = "UserIngredController">
           <table>
+            <tr> <td> Meats and Seafood </td></tr>
+            <tr ng-repeat= "(ingred, ingObj) in getUserIngreds() | categoryFilter: 'Beef' ">
+              <td><form class="table_qty"><input type="number" ng-model="ingred.quantity"></form> pounds of {{ingred.ingredient.name}} </td>
+              <td class ="emissions"> {{subTotal(ingred.quantity, ingred.ingredient.emissions)}} kg CO<sub>2</sub>e </td>
+              <td class="emissions">
+                <button type="button" data-toggle="modal" ng-attr-data-target={{'#'+ingred.ingredient.name+'modal'}}>Update</button>
+                <button value="remove" ng-click="remove(ingred)">Remove</button>
+
+              <div class="modal fade" ng-attr-id={{ingred.ingredient.name+'modal'}} tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                      <h4 class="modal-title" id="myModalLabel">Update Ingredient Details: {{ingred.ingredient.name}} </h4>
+                    </div>
+                    <div class="modal-body">
+                      <form>
+                        <div class="modalText">Quantity (in pounds): </div>
+                        <input class="update_input" type="number" name="quantity" ng-model="ingred.quantity">
+                      </form>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                      <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="addIngredient()">Save changes</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              </td>
+            </tr>
+            <tr><td>Other</td></tr>
             <tr ng-repeat= "ingred in getUserIngreds()">
               <td><form class="table_qty"><input type="number" ng-model="ingred.quantity"></form> pounds of {{ingred.ingredient.name}} </td>
               <td class ="emissions"> {{subTotal(ingred.quantity, ingred.ingredient.emissions)}} kg CO<sub>2</sub>e </td>
@@ -157,8 +188,6 @@
               </td>
             </tr>
           </table>
-
-
 
           <h2 class="total_header">TOTAL</h2>
           <p>Your carbon foodprint is <span class="emphasize">{{total()}} kg of CO<sub>2</sub>e. </span>That is the equivalent of driving <span class="emphasize">{{miles()}} miles </span>in a car.</p>
