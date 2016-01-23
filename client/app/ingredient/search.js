@@ -37,9 +37,9 @@ angular.module('calculator.search', [])
   };
 
   $scope.addToList = function() {
+    console.log($scope.item);
     Ingredients.addIngredient($scope.item);
     $scope.reset();
-    console.log($scope.item);
   };
 
   // $scope.allIngreds = function(){

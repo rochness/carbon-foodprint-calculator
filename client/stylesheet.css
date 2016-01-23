@@ -103,6 +103,10 @@ button {
 .columns {
 	-webkit-columns:3;
 	-webkit-column-width:auto;
+	-moz-columns:3;
+	-moz-column-width:auto;
+	-ms-columns:3;
+	-ms-column-width:auto;
 }
 
 #foodprint{
@@ -152,17 +156,29 @@ button {
 	float: right;
 }
 
-td {
+/*td {
 	width: 30%;
 	font-size: 14px;
 
-}
+}*/
 
 .qty_input {
 	width: 40px;
 }
+.breakdown_text {
+	font-size: 12px;
+	padding-right: 5px;
+}
+
 .emissions {
 	text-align: right;
+	width: 20%;
+	vertical-align: center;
+	padding-right: 7px;
+}
+
+.emissionButtonContainer {
+	width: 15%;
 }
 
 .remove_button {
