@@ -1,12 +1,12 @@
 angular.module('calculator.search', [])
 
 .controller('SearchController', function ($scope, Ingredients) {
-  
+
   $scope.item = {};
   $scope.categories = Ingredients.getCategories();
   $scope.selected = false;
   $scope.found = true;
-  
+
   $scope.toggleFound = function(){
     if($scope.found === false){
       $scope.found = true;
@@ -22,19 +22,19 @@ angular.module('calculator.search', [])
 
   $scope.setIngred = function (ingred) {
     if(!ingred){
-      $scope.item.ingredient = Ingredients.searchIngred($scope.input); 
+      $scope.item.ingredient = Ingredients.searchIngred($scope.input);
     } else {
       $scope.item.ingredient = ingred;
     }
     if($scope.item.ingredient === null){
       $scope.toggleFound();
-    } 
+    }
   };
 
   $scope.reset = function (){
     $scope.item = {};
     $scope.input = '';
-  };  
+  };
 
   $scope.addToList = function() {
     Ingredients.addIngredient($scope.item);
@@ -42,9 +42,21 @@ angular.module('calculator.search', [])
     console.log($scope.item);
   };
 
-  $scope.allIngreds = function(){
-    return Ingredients.allIngredients();
+  // $scope.allIngreds = function(){
+  //   return Ingredients.allIngredients();
+  // };
+
+  $scope.getAllIngreds = function () {
+    Ingredients.allIngredients()
+      .then(function(ingreds) {
+        $scope.allIngreds = ingreds;
+        console.log(ingreds);
+      }).catch(function(err) {
+        console.error(err);
+      });
   };
+
+  $scope.getAllIngreds();
 
   $scope.toggleSelected = function() {
     if($scope.selected === false){
@@ -52,6 +64,5 @@ angular.module('calculator.search', [])
     } else {
       $scope.selected = false;
     }
-    console.log($scope.selected);
   }
 });

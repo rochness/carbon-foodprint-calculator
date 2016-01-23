@@ -3,8 +3,11 @@ angular.module('calculator', [
   'calculator.search',
   'calculator.userIngreds',
   'angular.filter',
-  'ngRoute'
-]).filter('categoryFilter', function(){
+  'ngRoute',
+  'ngParse'
+]).config(['ParseProvider', function(ParseProvider) {
+  ParseProvider.initialize("seSR5LEKwzjFttoeXj1vv65ldaNUYANE0xjXfufS", "VyHm4JZuL43K1wiWGPId04gLXNULltmW77cEdxmF");
+}]).filter('categoryFilter', function(){
     return function(input, category) {
       if (!input) return input;
       if (!category) return input;
