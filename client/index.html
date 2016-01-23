@@ -48,7 +48,7 @@
               <div ng-switch-when="false">
                 <p>Sorry, we could not find your exact ingredient in our database. Try searching by category, entering another ingredient, or selecting a best match from below: </p>
                 <ul>
-                  <li ng-repeat="(ingred, ingObj) in allIngreds() | fuzzy:input">
+                  <li ng-repeat="(ingred, ingObj) in allIngreds | fuzzy:input">
                   <a class ="menu_item" ng-click= "setIngred(ingObj);setInput(item.ingredient.name);toggleFound()">{{ingObj.name}}</a>
                   </li>
                 </ul>
@@ -70,8 +70,8 @@
                        {{category}}
                         <span class="glyphicon glyphicon-chevron-right"></span>
                         </a>
-                        <ul class="dropdown-menu">
-                          <li ng-repeat ="(ingred, ingObj) in allIngreds() | categoryFilter: category"><a ng-model="input" ng-click="setIngred(ingObj); toggleSelected()">{{ingObj.name}}</a></li>
+                        <ul class="dropdown-menu columns">
+                          <li ng-repeat ="(ingred, ingObj) in filteredIngreds = (allIngreds | categoryFilter: category)"><a ng-model="input" ng-click="setIngred(ingObj); toggleSelected()">{{ingObj.name}} </a> {{filteredIngreds.length}} </li>
                         </ul>
                       </div>
                     </li>
@@ -86,7 +86,7 @@
                         <span class="glyphicon glyphicon-chevron-right"></span>
                         </a>
                         <ul class="dropdown-menu">
-                          <li ng-repeat ="(ingred, ingObj) in allIngreds() | categoryFilter: category"><a ng-model="input" ng-click="setIngred(ingObj); toggleSelected()">{{ingObj.name}}</a></li>
+                          <li ng-repeat ="(ingred, ingObj) in allIngreds | categoryFilter: category"><a ng-model="input" ng-click="setIngred(ingObj); toggleSelected()">{{ingObj.name}}</a></li>
                         </ul>
                       </div>
                     </li>
@@ -101,7 +101,7 @@
                         <span class="glyphicon glyphicon-chevron-right"></span>
                         </a>
                         <ul class="dropdown-menu">
-                          <li ng-repeat ="(ingred, ingObj) in allIngreds() | categoryFilter: category"><a ng-model="input" ng-click="setIngred(ingObj); toggleSelected()">{{ingObj.name}}</a></li>
+                          <li ng-repeat ="(ingred, ingObj) in allIngreds | categoryFilter: category"><a ng-model="input" ng-click="setIngred(ingObj); toggleSelected()">{{ingObj.name}}</a></li>
                         </ul>
                       </div>
                     </li>

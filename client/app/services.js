@@ -198,7 +198,7 @@ angular.module('calculator.services', [])
     'Dairy',
     'Fruit',
     'Vegetables',
-    'Grain/Legume',
+    'Grain/ Legume',
     'Miscellaneous'
   ];
 

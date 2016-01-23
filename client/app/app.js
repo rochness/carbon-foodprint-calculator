@@ -5,18 +5,20 @@ angular.module('calculator', [
   'angular.filter',
   'ngRoute',
   'ngParse'
-]).config(['ParseProvider', function(ParseProvider) {
-  ParseProvider.initialize("seSR5LEKwzjFttoeXj1vv65ldaNUYANE0xjXfufS", "VyHm4JZuL43K1wiWGPId04gLXNULltmW77cEdxmF");
-}]).filter('categoryFilter', function(){
+]).filter('categoryFilter', function(){
     return function(input, category) {
-      if (!input) return input;
-      if (!category) return input;
+      // if (!input) return input;
+      // if (!category) return input;
       var expected = ('' + category).toLowerCase();
-      var result = {};
+      // var result = {};
+      var result = [];
       angular.forEach(input, function(value, key) {
-        var actualCategory = (value.category).toLowerCase();
+        var category = value.category || value.sub_broad_category;
+        // if(value.category === 'Milk')
+        var actualCategory = category.toLowerCase();
         if (actualCategory === expected) {
-          result[key] = value;
+          // result[key] = value;
+          result.push(value);
         }
       });
       return result;
