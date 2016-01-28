@@ -1,0 +1,61 @@
+<div class = "browse">
+  <div class="selectCat"> Browse by Category </div>
+  <div ng-switch="selected">
+    <div class="row category_dropdowns" ng-switch-when='false'>
+      <div class="col-sm-4">
+        <ul class="nav nav-stacked">
+          <li ng-repeat="category in categories.slice(0,4)">
+            <div class="btn-group dropright">
+              <a class="btn dropdown-toggle categories" data-toggle="dropdown" href="#" ng-model="category">
+             {{category}}
+              <span class="glyphicon glyphicon-chevron-right"></span>
+              </a>
+              <ul class="dropdown-menu columns">
+                <li ng-repeat ="(ingred, ingObj) in filteredIngreds = (allIngreds | categoryFilter: category)"><a ng-model="input" ng-click="setIngred(ingObj); toggleSelected()">{{ingObj.name}} </a></li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="col-sm-4">
+        <ul class="nav nav-stacked">
+          <li ng-repeat="category in categories.slice(4,8)">
+            <div class="btn-group dropright">
+              <a class="btn dropdown-toggle categories" data-toggle="dropdown" href="#" ng-model="category">
+             {{category}}
+              <span class="glyphicon glyphicon-chevron-right"></span>
+              </a>
+              <ul class="dropdown-menu columns">
+                <li ng-repeat ="(ingred, ingObj) in allIngreds | categoryFilter: category"><a ng-model="input" ng-click="setIngred(ingObj); toggleSelected()">{{ingObj.name}}</a></li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="col-sm-4">
+        <ul class="nav nav-stacked">
+          <li ng-repeat="category in categories.slice(8)">
+            <div class="btn-group dropright">
+              <a class="btn dropdown-toggle categories" data-toggle="dropdown" href="#" ng-model="category">
+             {{category}}
+              <span class="glyphicon glyphicon-chevron-right"></span>
+              </a>
+              <ul class="dropdown-menu columns">
+                <li ng-repeat ="(ingred, ingObj) in allIngreds | categoryFilter: category"><a ng-model="input" ng-click="setIngred(ingObj); toggleSelected()">{{ingObj.name}}</a></li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="browse_quantity" ng-switch-when='true'>
+      <div class="browse_selection"> Your selection: {{item.ingredient.name}} </div>
+      <form name="quantityForm" novalidate>
+      Enter quantity (in pounds):
+      <input type="number" name="quantity" ng-model="item.quantity">
+      <button class="add_button" ng-click="addToList(); quantityForm.$setPristine(); toggleSelected()"> Add ingredient </button>
+      <button class="cancel_button" ng-click="reset(); quantityForm.$setPristine(); toggleSelected()"> Cancel </button>
+      </form>
+    </div>
+  </div>
+</div>

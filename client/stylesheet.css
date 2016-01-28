@@ -104,10 +104,10 @@ button {
 	-ms-columns:3;
 	-ms-column-width:auto;
 }
-
+/*
 #foodprint{
 	padding-bottom: 100px;
-}
+}*/
 
 .headertext{
 	position: absolute;
@@ -147,6 +147,7 @@ button {
 
 .breakdown{
 	min-height: 125px;
+	padding-bottom: 100px;
 }
 
 #next{

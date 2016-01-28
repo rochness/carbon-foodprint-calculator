@@ -3,8 +3,29 @@ angular.module('calculator', [
   'calculator.search',
   'calculator.userIngreds',
   'angular.filter',
-  'ngRoute',
-]).filter('categoryFilter', function(){
+  'ui.router'
+]).config(function($stateProvider, $urlRouterProvider){
+    $urlRouterProvider.otherwise('/');
+    $stateProvider
+      .state('main', {
+        url: '/',
+        views: {
+          '': { templateUrl: 'app/main.html' },
+          'searchIngredients@main': {
+            templateUrl: 'app/ingredient/search-ingredients.html',
+            controller: 'SearchController'
+          },
+          'browseIngredients@main': {
+            templateUrl: 'app/ingredient/browse-ingredients.html',
+            controller: 'SearchController'
+          },
+          'calculateIngredients@main': {
+            templateUrl: 'app/calculate/calculate-ingredients.html',
+            controller: 'UserIngredController'
+          }
+        }
+      });
+  }).filter('categoryFilter', function(){
     return function(input, category) {
       if (!input) return input;
       if (!category) return input;
