@@ -36,18 +36,14 @@ h4{
 	text-align: left;
 }
 
-form, p, span, input, button, .btn, td, .or, .selectCat, .browse_selection, .dropdown-toggle, a {
+form, p, span, input, button, .btn, td, tr, body, .or, .selectCat, .browse_selection, .dropdown-toggle, a {
 	font-family: Proxima Nova;
 	font-size: 14px;
 }
 
-span {
-	font-family: 'Arimo', sans-serif;
-	font-size: 15px;
-}
 
 input {
-	font-color: grey;
+	color: grey;
 	font-size: 14px;
 	width: 40%;
 	position: relative;
@@ -139,6 +135,7 @@ button {
 	font-size: 16px;
 	background-color: #bfbfbf;
 	padding: 7px;
+	margin-top: 10px;
 }
 
 .offset_header {
@@ -173,12 +170,25 @@ button {
 .emissions {
 	text-align: right;
 	width: 20%;
-	vertical-align: center;
+	vertical-align: middle;
 	padding-right: 7px;
+}
+
+.qty_ingred_breakdown {
+	vertical-align: middle;
+	/*font-size: 12px;*/
 }
 
 .emissionButtonContainer {
 	width: 15%;
+}
+
+td > span {
+	vertical-align: middle;
+}
+
+table {
+	width: 100%;
 }
 
 .remove_button {
@@ -191,7 +201,7 @@ button {
 	margin-top: 10px;
 }
 
-form{
+.searchForm{
 	margin-bottom: 20px;
 	position: relative;
 }
@@ -250,5 +260,6 @@ form{
 }
 
 .table_qty input{
-	width: 100%;
+	width: 90%;
+	padding-left: 3pxl
 }
