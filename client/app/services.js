@@ -9,14 +9,6 @@ angular.module('calculator.services', [])
 
   var parseUrl = 'https://api.parse.com/1/classes/Ingredients';
 
-  var transport = {
-    shortFlight: 4.78,
-    longFlight: 19.10,
-    longRoad: .49,
-    shortRoad: .05,
-    sea: .26
-  }
-
   var ingredDB = {};
   var userIngredients = {};
 

@@ -1,0 +1,17 @@
+<div>
+  <p> Ingredient: {{item.ingredient.name}} </p>
+  <form class="transport-form" ng-model="item.modifier">
+    How was your ingredient transported?
+    <input type="checkbox" name="distance" > By sea
+    <input type="checkbox" name="distance" value="long"> By long-haul flight (more than 6000 miles)
+    <input type="checkbox" name="distance" value=> By short-haul flight (less than 1500 miles)
+    <input type="checkbox" name="distance" value=> By long distance vehicle (more than 300 miles)
+    <input type="checkbox" name="distance" value=> By short distance vehicle (less than 300 miles)
+  </form>
+   <form name="quantityForm" ng-if="$scope.ingredient !== null && searchForm.$submitted === true" ng-submit="addToList();searchForm.$setPristine(); quantityForm.$setPristine()" novalidate>
+   Enter quantity (in pounds):
+    <input type="number" name="quantity" ng-model="item.quantity">
+    <button class="add_button" ng-if="searchForm.$dirty" type="submit"> Add ingredient </button>
+    <button class="cancel_button" ng-if="searchForm.$dirty" ng-click="reset(); searchForm.$setPristine(); quantityForm.$setPristine()"> Cancel </button>
+   </form>
+</div>

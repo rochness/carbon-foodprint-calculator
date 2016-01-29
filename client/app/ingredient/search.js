@@ -7,6 +7,14 @@ angular.module('calculator.search', [])
   $scope.selected = false;
   $scope.found = true;
 
+  $scope.toggleSelected = function() {
+    if($scope.selected === false){
+      $scope.selected = true;
+    } else {
+      $scope.selected = false;
+    }
+  };
+
   $scope.toggleFound = function(){
     if($scope.found === false){
       $scope.found = true;
@@ -28,7 +36,14 @@ angular.module('calculator.search', [])
     }
     if($scope.item.ingredient === null){
       $scope.toggleFound();
+    } else {
+      $scope.toggleSelected();
+      console.log('scope.selected: ', $scope.selected);
     }
+  };
+
+  $scope.setTransportModifier = function (transportType) {
+    $scope.item.modifier = $scope.item.ingredient[transportType];
   };
 
   $scope.reset = function (){
@@ -50,7 +65,7 @@ angular.module('calculator.search', [])
     Ingredients.allIngredients()
       .then(function(ingreds) {
         $scope.allIngreds = ingreds;
-        console.log(ingreds);
+        console.log('getAllIngreds called', ingreds);
       }).catch(function(err) {
         console.error(err);
       });
@@ -58,11 +73,4 @@ angular.module('calculator.search', [])
 
   $scope.getAllIngreds();
 
-  $scope.toggleSelected = function() {
-    if($scope.selected === false){
-      $scope.selected = true;
-    } else {
-      $scope.selected = false;
-    }
-  }
 });

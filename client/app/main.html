@@ -6,9 +6,16 @@
       </span>
     </div>
     <div class = "select_ingreds">
-      <div ui-view="searchIngredients"></div>
-      <div class = 'or'> OR </div>
-      <div ui-view="browseIngredients"></div>
+      <div ng-switch="selected">
+        <div ng-switch-when="false">
+          <div ui-view="searchIngredients"></div>
+          <div class = 'or'> OR </div>
+          <div ui-view="browseIngredients"></div>
+        </div>
+        <div ng-switch-when="true">
+          <div ui-view="enterModifiers"></div>
+        </div>
+      </div>
     </div>
   </div>
   <div class ="rightContainer col-sm-5">

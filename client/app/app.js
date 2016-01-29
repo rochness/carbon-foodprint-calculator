@@ -10,13 +10,20 @@ angular.module('calculator', [
       .state('main', {
         url: '/',
         views: {
-          '': { templateUrl: 'app/main.html' },
+          '': {
+            templateUrl: 'app/main.html',
+            controller: 'SearchController'
+          },
           'searchIngredients@main': {
             templateUrl: 'app/ingredient/search-ingredients.html',
             controller: 'SearchController'
           },
           'browseIngredients@main': {
             templateUrl: 'app/ingredient/browse-ingredients.html',
+            controller: 'SearchController'
+          },
+          'enterModifiers@main': {
+            templateUrl: 'app/ingredient/enter-modifiers.html',
             controller: 'SearchController'
           },
           'calculateIngredients@main': {
@@ -45,13 +52,13 @@ angular.module('calculator', [
     };
   }).filter('broadCategoryFilter', function(){
     return function(input, category) {
-      console.log(category);
+      // console.log(category);
       if (!input) return input;
       if (!category) return input;
       var expected = ('' + category).toLowerCase();
       var result = [];
       angular.forEach(input, function(value, key) {
-        console.log('value: ', value);
+        // console.log('value: ', value);
         var actualCategory = value.ingredient.broad_category.toLowerCase();
         if (actualCategory === expected) {
           result.push(value);

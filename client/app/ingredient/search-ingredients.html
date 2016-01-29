@@ -1,27 +1,16 @@
 <div class = "enter_ingred">
-  <form ng-if="!found" class="searchForm" name="searchForm" ng-submit="setIngred()">
+  <form class="searchForm" name="searchForm" ng-submit="setIngred()">
     <input class="ingred_input" type="text" name="ingred" ng-model="input" ng-disabled="found===false" placeholder= "Type the name of an ingredient...">
     <button class="search_button" type="submit"> Search for Ingredient </button>
   </form>
 
-  <div ng-switch="found">
-    <div ng-switch-when="true">
-      <form name="quantityForm" ng-if="$scope.ingredient !== null && searchForm.$submitted === true" ng-submit="addToList();searchForm.$setPristine(); quantityForm.$setPristine()" novalidate>
-      Enter quantity (in pounds):
-      <input type="number" name="quantity" ng-model="item.quantity">
-      <button class="add_button" ng-if="searchForm.$dirty" type="submit"> Add ingredient </button>
-      <button class="cancel_button" ng-if="searchForm.$dirty" ng-click="reset(); searchForm.$setPristine(); quantityForm.$setPristine()"> Cancel </button>
-      </form>
-    </div>
-    <div ng-switch-when="false">
-      <p>Sorry, we could not find your exact ingredient in our database. Try searching by category, entering another ingredient, or selecting a best match from below: </p>
-      <ul>
-        <li ng-repeat="(ingred, ingObj) in allIngreds | fuzzy:input">
-        <a class ="menu_item" ng-click= "setIngred(ingObj);setInput(item.ingredient.name);toggleFound()">{{ingObj.name}}</a>
-        </li>
-      </ul>
-
-      <button class="ok_button" ng-click="reset(); searchForm.$setPristine(); toggleFound()"> New Search </button>
-    </div>
+  <div ng-if="found === false">
+    <p>Sorry, we could not find your exact ingredient in our database. Try searching by category, entering another ingredient, or selecting a best match from below: </p>
+    <ul>
+      <li ng-repeat="(ingred, ingObj) in allIngreds | fuzzy:input">
+      <a class ="menu_item" ng-click= "setIngred(ingObj);setInput(item.ingredient.name);toggleFound()">{{ingObj.name}}</a>
+      </li>
+    </ul>
+    <button class="ok_button" ng-click="reset(); searchForm.$setPristine(); toggleFound()"> New Search </button>
   </div>
 </div>
