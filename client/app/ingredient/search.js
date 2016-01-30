@@ -1,11 +1,24 @@
 angular.module('calculator.search', [])
 
-.controller('SearchController', function ($scope, Ingredients) {
+.controller('SearchController', function ($rootScope, $scope, Ingredients) {
 
-  $scope.item = {};
+  $scope.item = $rootScope.item || {};
   $scope.categories = Ingredients.getCategories();
   $scope.selected = false;
   $scope.found = true;
+
+  $scope.$on('selected', function(event, args) {
+    console.log('args from selected trigger: ', args);
+    $scope.selected = args.selected;
+    $scope.item = args.item;
+    // var item = $scope.item;
+    // $scope.$broadcast('item', {item});
+  });
+
+  // $scope.$on('item', function(event, args) {
+  //   $scope.item = args.item;
+  //   console.log('heard item: ', $scope.item);
+  // });
 
   $scope.toggleSelected = function() {
     if($scope.selected === false){
@@ -13,6 +26,10 @@ angular.module('calculator.search', [])
     } else {
       $scope.selected = false;
     }
+    var selected = $scope.selected;
+    var item = $scope.item
+    $scope.$emit('selected', {selected, item});
+    $rootScope.selected = $scope.selected;
   };
 
   $scope.toggleFound = function(){
@@ -38,6 +55,7 @@ angular.module('calculator.search', [])
       $scope.toggleFound();
     } else {
       $scope.toggleSelected();
+      $rootScope.item = $scope.item;
       console.log('scope.selected: ', $scope.selected);
     }
   };
