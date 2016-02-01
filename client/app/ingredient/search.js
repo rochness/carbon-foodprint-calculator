@@ -3,9 +3,17 @@ angular.module('calculator.search', [])
 .controller('SearchController', function ($rootScope, $scope, Ingredients) {
 
   $scope.item = $rootScope.item || {};
+  $scope.transportPrompts = {
+    sea: 'By sea',
+    long_flight: 'By long-haul flight (more than 6000 miles)',
+    short_flight: 'By short-haul flight (less than 1500 miles)',
+    long_road: 'By long distance vehicle (more than 300 miles)',
+    short_road: 'By short distance vehicle (less than 300 miles)'
+  };
   $scope.categories = Ingredients.getCategories();
   $scope.selected = false;
   $scope.found = true;
+
 
   $scope.$on('selected', function(event, args) {
     console.log('args from selected trigger: ', args);
@@ -45,6 +53,16 @@ angular.module('calculator.search', [])
     $scope.input = newInput;
   };
 
+  $scope.getTransportTypes = function(ingred) {
+    var result = [];
+    for(var key in $scope.transportPrompts) {
+      if(ingred[key]){
+        result.push(key);
+      }
+    }
+    return result;
+  }
+
   $scope.setIngred = function (ingred) {
     if(!ingred){
       $scope.item.ingredient = Ingredients.searchIngred($scope.input);
@@ -55,8 +73,10 @@ angular.module('calculator.search', [])
       $scope.toggleFound();
     } else {
       $scope.toggleSelected();
+      $scope.item.transportTypes = $scope.getTransportTypes($scope.item.ingredient);
       $rootScope.item = $scope.item;
-      console.log('scope.selected: ', $scope.selected);
+
+      console.log('scope.item: ', $scope.item);
     }
   };
 

@@ -163,6 +163,16 @@ button {
 .qty_input {
 	width: 40px;
 }
+
+.transport_inputs {
+	width: 5%;
+}
+
+.list_transport_inputs {
+	list-style-type:none
+}
+
+
 .breakdown_text {
 	font-size: 12px;
 	padding-right: 5px;
