@@ -1,16 +1,25 @@
 <div>
-  <p> Ingredient: <strong>{{item.ingredient.name}} </strong> </p>
-  <form class="transport-form" ng-model="item.modifier">
-    <strong>How was your ingredient transported?</strong>
-    <ul class="list_transport_inputs">
-      <li ng-repeat="transportType in item.transportTypes"><input class="transport_inputs" type="radio" name="distance" ng-model="item.modifier" ng-value="item.ingredient.transportType" > {{transportPrompts[transportType]}} </li>
-      <li> <input class="transport_inputs" type="radio" name="distance" ng-model="item.modifier" value="1"> I don't know </li>
-    </ul>
-  </form>
-   <form name="quantityForm" ng-submit="addToList();searchForm.$setPristine(); quantityForm.$setPristine()" novalidate>
-   Enter quantity (in pounds):
-    <input type="number" name="quantity" ng-model="item.quantity">
-    <button class="add_button" type="submit"> Add ingredient </button>
-    <button class="cancel_button" ng-click="reset(); searchForm.$setPristine(); quantityForm.$setPristine()"> Cancel </button>
-   </form>
+  <div class="transport_container">
+    <p> Ingredient: <strong>{{item.ingredient.name}} </strong> </p>
+    <form class="transport-form">
+      <strong>How was your ingredient transported?</strong>
+      <ul class="list_transport_inputs">
+        <li ng-repeat="transportType in item.transportTypes"><input class="transport_inputs" type="radio" name="distance" ng-model="item.transportModifier" ng-value="transportType" > {{transportPrompts[transportType]}} </li>
+        <li> <input class="transport_inputs" type="radio" name="distance" ng-model="item.modifier" value="1"> I don't know </li>
+      </ul>
+    </form>
+  </div>
+  <div class="enter_qty_container">
+    <form name="quantityForm" ng-submit="addToList();searchForm.$setPristine(); quantityForm.$setPristine()" novalidate>
+      <input class="ingred_qty_input" type="number" min="0" step="any" name="quantity" ng-model="item.quantity" placeholder='Enter quantity'>
+      <select class="unit_type" ng-model="item.unit" placeholder="Select unit">
+        <option value="pounds"> pounds </option>
+        <option value="ounces"> ounces </option>
+        <option value="kilograms"> kilograms </option>
+        <option value="grams"> grams </option>
+      </select>
+      <button class="add_button" type="submit"> Add ingredient </button>
+      <button class="cancel_button" ng-click="reset(); searchForm.$setPristine(); quantityForm.$setPristine()"> Cancel </button>
+    </form>
+  </div>
 </div>

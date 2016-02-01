@@ -7,7 +7,7 @@ angular.module('calculator.search', [])
     quantity - the amount inputed by user to indicate the amount they want to measure
     unit - the type of measurement unit as input by user
     transportTypes - an array of the different types of transport options that exist in the DB for this particular ingredient
-    transportModifer - a multiplier to represent additional emissions resulting from transport
+    transportModifer - the transportType selected by the user for this ingredient
   */
   $scope.item = $rootScope.item || {};
 

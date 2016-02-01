@@ -36,9 +36,15 @@ h4{
 	text-align: left;
 }
 
-form, p, span, input, button, .btn, td, tr, body, .or, .selectCat, .browse_selection, .dropdown-toggle, a {
+form, p, span, input, select, button, .btn, td, tr, body, .or, .selectCat, .browse_selection, .dropdown-toggle, a {
 	font-family: Proxima Nova;
 	font-size: 14px;
+}
+
+select {
+	/*border:0;*/
+	-webikit-appearnce:none;
+	-moz-appearance: none;
 }
 
 
@@ -85,6 +91,10 @@ button {
 	height: 50px;
 	width: 80%;
 	padding-left: 10px;
+}
+
+.ingred_qty_input {
+	width: 120px;
 }
 
 #select_ingreds{
