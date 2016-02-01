@@ -3,11 +3,7 @@
   <form class="transport-form" ng-model="item.modifier">
     <strong>How was your ingredient transported?</strong>
     <ul class="list_transport_inputs">
-      <li><input class="transport_inputs" type="radio" name="distance" ng-model="item.modifier" ng-value="item.ingredientsea" > By sea </li>
-      <li> <input class="transport_inputs" type="radio" name="distance" ng-model="item.modifier" ng-value="long_flight"> By long-haul flight (more than 6000 miles) </li>
-      <li> <input class="transport_inputs" type="radio" name="distance" ng-model="item.modifier" ng-value="short_flight"> By short-haul flight (less than 1500 miles) </li>
-      <li> <input class="transport_inputs" type="radio" name="distance" ng-model="item.modifier" ng-value="long_road"> By long distance vehicle (more than 300 miles) </li>
-      <li> <input class="transport_inputs" type="radio" name="distance" ng-model="item.modifier" ng-value="short_road"> By short distance vehicle (less than 300 miles)</li>
+      <li ng-repeat="transportType in item.transportTypes"><input class="transport_inputs" type="radio" name="distance" ng-model="item.modifier" ng-value="item.ingredient.transportType" > {{transportPrompts[transportType]}} </li>
       <li> <input class="transport_inputs" type="radio" name="distance" ng-model="item.modifier" value="1"> I don't know </li>
     </ul>
   </form>
