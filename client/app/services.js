@@ -58,7 +58,6 @@ angular.module('calculator.services', [])
     return $http({method: 'GET', url: parseUrl, headers: parseHeaders, params:{limit: 500}})
       .then(function(response) {
         var data = response.data.results;
-        console.log('length of response data array: ', response.data.results.length);
         data.forEach(function(ingred) {
           var ingredKey = ingred.ingredient.toLowerCase();
           ingredDB[ingredKey] = ingred;

@@ -7,10 +7,10 @@
       <li> <input class="transport_inputs" type="radio" name="distance" ng-model="item.modifier" value="1"> I don't know </li>
     </ul>
   </form>
-   <form name="quantityForm" ng-if="$scope.ingredient !== null && searchForm.$submitted === true" ng-submit="addToList();searchForm.$setPristine(); quantityForm.$setPristine()" novalidate>
+   <form name="quantityForm" ng-submit="addToList();searchForm.$setPristine(); quantityForm.$setPristine()" novalidate>
    Enter quantity (in pounds):
     <input type="number" name="quantity" ng-model="item.quantity">
-    <button class="add_button" ng-if="searchForm.$dirty" type="submit"> Add ingredient </button>
-    <button class="cancel_button" ng-if="searchForm.$dirty" ng-click="reset(); searchForm.$setPristine(); quantityForm.$setPristine()"> Cancel </button>
+    <button class="add_button" type="submit"> Add ingredient </button>
+    <button class="cancel_button" ng-click="reset(); searchForm.$setPristine(); quantityForm.$setPristine()"> Cancel </button>
    </form>
 </div>
