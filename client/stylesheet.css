@@ -93,6 +93,14 @@ button {
 	padding-left: 10px;
 }
 
+.enter_qty_container {
+	border-top-style: solid;
+	border-top-width: 2px;
+	border-top-color: #bfbfbf;
+	margin-top: 25px;
+	padding-top: 25px;
+}
+
 .ingred_qty_input {
 	width: 120px;
 }

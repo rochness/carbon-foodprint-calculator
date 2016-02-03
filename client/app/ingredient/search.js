@@ -31,17 +31,12 @@ angular.module('calculator.search', [])
 
 
   $scope.$on('selected', function(event, args) {
-    console.log('args from selected trigger: ', args);
+    // console.log('heard trigger from $scope.emit: ', args);
     $scope.selected = args.selected;
     $scope.item = args.item;
     // var item = $scope.item;
     // $scope.$broadcast('item', {item});
   });
-
-  // $scope.$on('item', function(event, args) {
-  //   $scope.item = args.item;
-  //   console.log('heard item: ', $scope.item);
-  // });
 
   $scope.setAndEmitSelected = function(bool) {
     $scope.selected = bool;
@@ -57,7 +52,7 @@ angular.module('calculator.search', [])
     } else {
       $scope.found = false;
     }
-    console.log($scope.input);
+    // console.log($scope.input);
   };
 
   $scope.setInput = function(newInput){
@@ -88,7 +83,7 @@ angular.module('calculator.search', [])
       $scope.item.transportTypes = $scope.getTransportTypes($scope.item.ingredient);
       $rootScope.item = $scope.item;
 
-      console.log('scope.selected: ', $scope.selected);
+      // console.log('scope.selected: ', $scope.selected);
     }
   };
 
@@ -97,7 +92,7 @@ angular.module('calculator.search', [])
   // };
 
   $scope.reset = function (){
-    console.log('scope.selected at beg of reset call: ', $scope.selected);
+    // console.log('scope.selected at beg of reset call: ', $scope.selected);
     $scope.item = {};
     $scope.input = '';
     $rootScope.item = {};
@@ -111,13 +106,14 @@ angular.module('calculator.search', [])
   };
 
   $scope.getAllIngreds = function () {
-    Ingredients.allIngredients()
-      .then(function(ingreds) {
+    Ingredients.allIngredients() // Makes a GET request to an API to get data
+      .then(function(ingreds) { // Upon receiving the data in response to the request, do something with the data (named ingreds)
         $scope.allIngreds = ingreds;
-        console.log('getAllIngreds called', ingreds);
+        console.log('1: this line gets called after receiving the response data in getAllIngreds', ingreds);
       }).catch(function(err) {
         console.error(err);
       });
+    console.log('2: last line in getAllIngreds function is called');
   };
 
   $scope.getAllIngreds();

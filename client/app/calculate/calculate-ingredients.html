@@ -32,7 +32,7 @@
             </div>
           </div>
         </td>
-        <td class="qty_ingred_breakdown"><form class="table_qty"><input type="number" ng-model="ingred.quantity"></form> <span> pounds of {{ingred.ingredient.name}} </span> </td>
+        <td class="qty_ingred_breakdown"><form class="table_qty"><input type="number" ng-model="ingred.quantity"></form> <span> {{ingred.unit}} of {{ingred.ingredient.name}} </span> </td>
         <td class ="emissions"> {{subTotal(ingred.quantity, ingred.ingredient.emissions)}} kg CO<sub>2</sub>e </td>
       </tr>
     </table>
