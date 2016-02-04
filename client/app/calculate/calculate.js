@@ -1,7 +1,7 @@
 angular.module('calculator.userIngreds', [])
 
 .controller('UserIngredController', function ($scope, Ingredients) {
-  
+
   //$scope.Ingredients = Ingredients;
 
   $scope.getUserIngreds = function(){
@@ -13,21 +13,32 @@ angular.module('calculator.userIngreds', [])
     $scope.getUserIngreds();
   });
 
-  $scope.total = function(){
-    var total = 0;
-    var ingredients = Ingredients.getUserIngreds();
-    for(var key in ingredients){
-      total += ingredients[key].quantity * ingredients[key].ingredient.emissions;
-    }
-    return Math.ceil(total * (1/2.2046) * 100)/100;
-  };
 
   $scope.miles = function(){
     return Math.ceil($scope.total()*(5/2)*100)/100;
   };
 
-  $scope.subTotal = function(qty, emiss){
-    return Math.ceil(qty * emiss * (1/2.2046) * 100)/100;
+  $scope.subTotal = function(item){
+    // because emissions are per kg
+    var conversions = {
+      "pounds": (1/2.2046),
+      "ounces": (1/35.274),
+      "grams": (1/1000),
+      "kilograms": 1
+    }
+    // debugger;
+    var qty = item.quantity;
+    var emiss = item.ingredient.emissions;
+    var modifier = item.transportModifier !== 'null' ? item.ingredient[item.transportModifier] + 1 : 1;
+    return Math.ceil((qty * emiss * conversions[item.unit]) * modifier * 100)/100;
+  };
+
+  $scope.total = function(){
+    var ingredients = Ingredients.getUserIngreds();
+    var ingredKeys = Object.keys(ingredients);
+    return ingredKeys.reduce(function(accum, key) {
+      return $scope.subTotal(ingredients[key]) + accum;
+    }, 0);
   };
 
   $scope.costs = function(qty, emiss){
@@ -38,6 +49,6 @@ angular.module('calculator.userIngreds', [])
     Ingredients.removeIngred(ingredient);
   };
 
-  $scope.getUserIngreds(); 
+  $scope.getUserIngreds();
 
 });

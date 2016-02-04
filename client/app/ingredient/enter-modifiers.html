@@ -5,7 +5,7 @@
       <strong>How was your ingredient transported?</strong>
       <ul class="list_transport_inputs">
         <li ng-repeat="transportType in item.transportTypes"><input class="transport_inputs" type="radio" name="distance" ng-model="item.transportModifier" ng-value="transportType" > {{transportPrompts[transportType]}} </li>
-        <li> <input class="transport_inputs" type="radio" name="distance" ng-model="item.modifier" value="1"> I don't know </li>
+        <li> <input class="transport_inputs" type="radio" name="distance" ng-model="item.transportModifier" value="null"> I don't know </li>
       </ul>
     </form>
   </div>
