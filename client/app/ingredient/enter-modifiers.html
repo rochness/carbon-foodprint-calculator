@@ -12,14 +12,17 @@
   <div class="enter_qty_container">
     <form name="quantityForm" ng-submit="addToList();searchForm.$setPristine(); quantityForm.$setPristine()" novalidate>
       <input class="ingred_qty_input" type="number" min="0" step="any" name="quantity" ng-model="item.quantity" placeholder='Enter quantity'>
-      <select class="unit_type" ng-model="item.unit" placeholder="Select unit">
-        <option value="pounds"> pounds </option>
-        <option value="ounces"> ounces </option>
-        <option value="kilograms"> kilograms </option>
-        <option value="grams"> grams </option>
-      </select>
-      <button class="add_button" type="submit"> Add ingredient </button>
+      <div class="styled-select">
+        <select class="unit_type" ng-model="item.unit">
+          <option value ="" disabled selected> Select unit </option>
+          <option value="pounds"> pounds </option>
+          <option value="ounces"> ounces </option>
+          <option value="kilograms"> kilograms </option>
+          <option value="grams"> grams </option>
+        </select>
+      </div>
       <button class="cancel_button" ng-click="reset(); searchForm.$setPristine(); quantityForm.$setPristine()"> Cancel </button>
+      <button class="add_button" type="submit"> Add ingredient </button>
     </form>
   </div>
 </div>

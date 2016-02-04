@@ -36,20 +36,36 @@ h4{
 	text-align: left;
 }
 
-form, p, span, input, select, button, .btn, td, tr, body, .or, .selectCat, .browse_selection, .dropdown-toggle, a {
+option, form, p, span, input, select, button, .btn, td, tr, body, .or, .selectCat, .browse_selection, .dropdown-toggle, a {
 	font-family: Proxima Nova;
 	font-size: 14px;
 }
 
+.styled-select {
+	/*overflow: hidden;*/
+	display: inline-block;
+	width: 120px;
+	border: 1px solid #cccccc;
+	height: 34px;
+	background: url(down_arrow.svg) no-repeat right center;
+}
+
 select {
-	/*border:0;*/
-	-webikit-appearnce:none;
+	border:0;
+	font-size: 14px;
+	color: #a6a6a6;
+	background: transparent;
+	line-height: 1;
+	height: 34px;
+	width: 148px;
+	padding: 10px;
+	margin-top: -1px;
+	-webkit-appearance:none;
 	-moz-appearance: none;
 }
 
-
 input {
-	color: grey;
+	color: #bfbfbf;
 	font-size: 14px;
 	width: 40%;
 	position: relative;
@@ -79,7 +95,6 @@ button {
 
 .calc_header{
 	padding-top: 0;
-	/*margin-top: 25px;*/
 	padding-bottom: 15px;
 	border-bottom-style: solid;
 	border-bottom-width: 2px;
@@ -103,15 +118,13 @@ button {
 
 .ingred_qty_input {
 	width: 120px;
+	height: 34px;
+	padding-left: 10px;
 }
 
-#select_ingreds{
-	border-right-style: solid;
-	border-right-width: 1px;
-	border-right-color: black;
-	padding-top: 50px;
+.select_ingreds{
 	padding-bottom: 100px;
-	padding-right: 30px;
+	/*padding-right: 30px;*/
 }
 
 .columns {
@@ -205,7 +218,6 @@ button {
 
 .qty_ingred_breakdown {
 	vertical-align: middle;
-	/*font-size: 12px;*/
 }
 
 .emissionButtonContainer {
@@ -226,8 +238,22 @@ table {
 	vertical-align: center;
 }
 
-.add_button {
-	margin-top: 10px;
+.add_button, .cancel_button {
+	padding-bottom: 2px;
+	height: 34px;
+	font-size: 14px;
+	font-weight: bold;
+	float: right;
+	border: 1px solid #cccccc;
+	background: #ccf5ff;
+	/*color: #a6a6a6;*/
+	margin-left: 8px;
+}
+
+.cancel_button {
+	background: none;
+  color: #a6a6a6;
+  font-weight: 100;
 }
 
 .searchForm{
@@ -241,14 +267,12 @@ table {
 }
 
 .or {
-	/*font-family: 'Arimo', sans-serif;*/
 	font-size: 20px;
 	margin-top: 10px;
 	margin-bottom: 10px;
 }
 
 .selectCat, .browse_selection {
-	/*font-family: 'Arimo', sans-serif;*/
 	font-size: 16px;
 	margin: 10px auto;
 }
@@ -290,5 +314,5 @@ table {
 
 .table_qty input{
 	width: 90%;
-	padding-left: 3pxl
+	padding-left: 3px;
 }
