@@ -44,9 +44,10 @@ option, form, p, span, input, select, button, .btn, td, tr, body, .or, .selectCa
 .styled-select {
 	/*overflow: hidden;*/
 	display: inline-block;
-	width: 120px;
+	width: 70px;
 	border: 1px solid #cccccc;
-	height: 34px;
+	border-radius: 4px;
+	height: 28px;
 	background: url(down_arrow.svg) no-repeat right center;
 }
 
@@ -56,9 +57,9 @@ select {
 	color: #a6a6a6;
 	background: transparent;
 	line-height: 1;
-	height: 34px;
-	width: 148px;
-	padding: 10px;
+	height: 28px;
+	width: 70px;
+	padding-left: 12px;
 	margin-top: -1px;
 	-webkit-appearance:none;
 	-moz-appearance: none;
@@ -71,8 +72,9 @@ input {
 	position: relative;
 }
 
-button {
-	font-size: 12px;
+input, button {
+	border-radius: 4px;
+	border: 1px solid;
 }
 
 .header span {
@@ -97,8 +99,8 @@ button {
 	padding-top: 0;
 	padding-bottom: 15px;
 	border-bottom-style: solid;
-	border-bottom-width: 2px;
-	border-bottom-color: #bfbfbf; /*gray*/
+	border-bottom-width: 1px;
+	border-bottom-color: #999999; /*dark gray*/
 	margin-bottom: 30px;
 }
 
@@ -109,21 +111,25 @@ button {
 }
 
 .enter_qty_container {
+	margin-bottom: 10px;
+}
+
+.add_cancel_button_container {
 	border-top-style: solid;
-	border-top-width: 2px;
-	border-top-color: #bfbfbf;
+	border-top-width: 1px;
+	border-top-color: #999999;
 	margin-top: 25px;
 	padding-top: 25px;
 }
 
 .ingred_qty_input {
-	width: 120px;
-	height: 34px;
+	width: 115px;
+	height: 28px;
 	padding-left: 10px;
 }
 
 .select_ingreds{
-	padding-bottom: 100px;
+	padding-bottom: 50px;
 	/*padding-right: 30px;*/
 }
 
@@ -147,11 +153,10 @@ button {
 	right:130px;
 	z-index: 3;
 }
-.rightContainer {
-	border-left-style: solid;
-	border-left-width: 1px;
-	border-left-color: #bfbfbf;
-
+.leftContainer {
+	border-right-style: solid;
+	border-right-width: 1px;
+	border-right-color: #000000;
 }
 
 .ingred_header {
@@ -244,7 +249,7 @@ table {
 	font-size: 14px;
 	font-weight: bold;
 	float: right;
-	border: 1px solid #cccccc;
+	border: 1px solid #999999;
 	background: #ccf5ff;
 	/*color: #a6a6a6;*/
 	margin-left: 8px;
@@ -252,7 +257,8 @@ table {
 
 .cancel_button {
 	background: none;
-  color: #a6a6a6;
+	color: #999999;
+  /*color: #a6a6a6;*/
   font-weight: 100;
 }
 

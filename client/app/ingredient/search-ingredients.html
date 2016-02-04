@@ -1,7 +1,7 @@
 <div class = "enter_ingred">
   <form class="searchForm" name="searchForm" ng-submit="setIngred()">
     <input class="ingred_input" type="text" name="ingred" ng-model="input" ng-disabled="found===false" placeholder= "Type the name of an ingredient...">
-    <button class="search_button" type="submit"> Search for Ingredient </button>
+    <button class="btn btn-default search_button" type="submit"> Search for Ingredient </button>
   </form>
 
   <div ng-if="found === false">
