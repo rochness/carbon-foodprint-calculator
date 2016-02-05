@@ -99,10 +99,14 @@ angular.module('calculator.search', [])
     $scope.setAndEmitSelected(false);
   };
 
-  $scope.addToList = function() {
-    console.log('added item to list ', $scope.item);
-    Ingredients.addIngredient($scope.item);
-    $scope.reset();
+  $scope.addToList = function(isValidForm, form) {
+    console.log('addToList called: ', isValidForm);
+    if(isValidForm) {
+      console.log('added item to list ', $scope.item);
+      Ingredients.addIngredient($scope.item);
+      $scope.reset();
+      form.$setPristine();
+    }
   };
 
   $scope.getAllIngreds = function () {

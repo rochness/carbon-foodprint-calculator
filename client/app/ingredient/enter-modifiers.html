@@ -1,11 +1,11 @@
 <div>
   <div class="transport_container">
     <p> Ingredient: <strong>{{item.ingredient.name}} </strong> </p>
-    <form name="quantityForm" ng-submit="addToList();searchForm.$setPristine(); quantityForm.$setPristine()" novalidate>
+    <form name="quantityForm" ng-submit="addToList(quantityForm.$valid, quantityForm); searchForm.$setPristine();" novalidate>
      <div class="enter_qty_container">
         <input class="ingred_qty_input" type="number" min="0" step="any" name="quantity" ng-model="item.quantity" placeholder='Enter quantity' required>
         <div class="styled-select">
-          <select class="unit_type" ng-model="item.unit" required>
+          <select class="unit_type" name="unit" ng-model="item.unit" required>
             <option value ="" disabled selected> Unit </option>
             <option value="pounds"> pounds </option>
             <option value="ounces"> ounces </option>
@@ -20,6 +20,15 @@
         <li> <input class="transport_inputs" type="radio" name="distance" ng-model="item.transportModifier" value="null" required> I don't know </li>
       </ul>
       <div class="add_cancel_button_container">
+        <div ng-if="quantityForm.distance.$error.required && quantityForm.$submitted">
+          <p class='form-warning'> You must select how your ingredient was transported. If you're not sure, select the "I don't know" option. </p>
+        </div>
+        <div ng-if="quantityForm.quantity.$error.required && quantityForm.$submitted">
+          <p class='form-warning'> Please enter the amount of the ingredient you want to measure. </p>
+        </div>
+        <div ng-if="quantityForm.unit.$error.required && quantityForm.$submitted">
+          <p class='form-warning'> Please select your unit of measurement from the dropdown. </p>
+        </div>
         <button class="btn btn-default cancel_button" ng-click="reset(); searchForm.$setPristine(); quantityForm.$setPristine()"> Cancel </button>
         <button class="btn btn-default add_button" type="submit"> Add ingredient </button>
       </div>
