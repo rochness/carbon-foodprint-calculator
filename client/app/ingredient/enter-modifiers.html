@@ -3,9 +3,9 @@
     <p> Ingredient: <strong>{{item.ingredient.name}} </strong> </p>
     <form name="quantityForm" ng-submit="addToList();searchForm.$setPristine(); quantityForm.$setPristine()" novalidate>
      <div class="enter_qty_container">
-        <input class="ingred_qty_input" type="number" min="0" step="any" name="quantity" ng-model="item.quantity" placeholder='Enter quantity'>
+        <input class="ingred_qty_input" type="number" min="0" step="any" name="quantity" ng-model="item.quantity" placeholder='Enter quantity' required>
         <div class="styled-select">
-          <select class="unit_type" ng-model="item.unit">
+          <select class="unit_type" ng-model="item.unit" required>
             <option value ="" disabled selected> Unit </option>
             <option value="pounds"> pounds </option>
             <option value="ounces"> ounces </option>
@@ -16,12 +16,12 @@
       </div>
       <p><strong>How was your ingredient transported?</strong></p>
       <ul class="list_transport_inputs">
-        <li ng-repeat="transportType in item.transportTypes"><input class="transport_inputs" type="radio" name="distance" ng-model="item.transportModifier" ng-value="transportType" > {{transportPrompts[transportType]}} </li>
-        <li> <input class="transport_inputs" type="radio" name="distance" ng-model="item.transportModifier" value="null"> I don't know </li>
+        <li ng-repeat="transportType in item.transportTypes"><input class="transport_inputs" type="radio" name="distance" ng-model="item.transportModifier" ng-value="transportType" required > {{transportPrompts[transportType]}} </li>
+        <li> <input class="transport_inputs" type="radio" name="distance" ng-model="item.transportModifier" value="null" required> I don't know </li>
       </ul>
       <div class="add_cancel_button_container">
-        <button class="cancel_button" ng-click="reset(); searchForm.$setPristine(); quantityForm.$setPristine()"> Cancel </button>
-        <button class="add_button" type="submit"> Add ingredient </button>
+        <button class="btn btn-default cancel_button" ng-click="reset(); searchForm.$setPristine(); quantityForm.$setPristine()"> Cancel </button>
+        <button class="btn btn-default add_button" type="submit"> Add ingredient </button>
       </div>
     </form>
 

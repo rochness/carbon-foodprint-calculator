@@ -44,7 +44,7 @@ option, form, p, span, input, select, button, .btn, td, tr, body, .or, .selectCa
 .styled-select {
 	/*overflow: hidden;*/
 	display: inline-block;
-	width: 70px;
+	width: 100px;
 	border: 1px solid #cccccc;
 	border-radius: 4px;
 	height: 28px;
@@ -58,14 +58,16 @@ select {
 	background: transparent;
 	line-height: 1;
 	height: 28px;
-	width: 70px;
+	width: 90px;
 	padding-left: 12px;
 	margin-top: -1px;
+	outline: none;
 	-webkit-appearance:none;
 	-moz-appearance: none;
 }
 
 input {
+	outline:none;
 	color: #bfbfbf;
 	font-size: 14px;
 	width: 40%;
