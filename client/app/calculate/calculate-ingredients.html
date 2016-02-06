@@ -20,7 +20,7 @@
                 </div>
                 <div class="modal-body">
                   <form>
-                    <div class="modalText">Quantity (in pounds): </div>
+                    <div class="modalText">Quantity: </div>
                     <input class="update_input" type="number" name="quantity" ng-model="ingred.quantity">
                   </form>
                 </div>
@@ -32,7 +32,7 @@
             </div>
           </div>
         </td>
-        <td class="qty_ingred_breakdown"><form class="table_qty"><input type="number" ng-model="ingred.quantity"></form> <span> {{ingred.unit}} of {{ingred.ingredient.name}} </span> </td>
+        <td class="qty_ingred_breakdown"><form class="table_qty"><input class="calc_qty_input" type="number" ng-model="ingred.quantity"></form> <span> {{ingred.unit}} of {{ingred.ingredient.name}} </span> </td>
         <td class ="emissions"> {{subTotal(ingred)}} kg CO<sub>2</sub>e </td>
       </tr>
     </table>

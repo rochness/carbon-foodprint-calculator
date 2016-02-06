@@ -38,7 +38,7 @@ angular.module('calculator.userIngreds', [])
     var ingredKeys = Object.keys(ingredients);
     return ingredKeys.reduce(function(accum, key) {
       return $scope.subTotal(ingredients[key]) + accum;
-    }, 0);
+    }, 0).toFixed(2);
   };
 
   $scope.costs = function(qty, emiss){
