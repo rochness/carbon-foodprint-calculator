@@ -1,6 +1,7 @@
 <div>
   <h2 class="ingred_header">INGREDIENTS </h2>
   <div class = "breakdown" ng-controller = "UserIngredController">
+    <div class="subtotal_container">
     <table>
       <tr>  Meats and Seafood </tr>
       <tr class="breakdown_text" ng-repeat= "ingred in getUserIngreds() | broadCategoryFilter: 'Meat and Fish' ">
@@ -106,9 +107,13 @@
         <td class ="emissions"> {{subTotal(ingred)}} kg CO<sub>2</sub>e </td>
       </tr>
     </table>
-
-  <h2 class="total_header">TOTAL</h2>
-  <p>Your carbon foodprint is <span class="emphasize">{{total()}} kg of CO<sub>2</sub>e. </span>This is to equivalent the emissions of driving <span class="emphasize">{{miles()}} miles </span>in a car.</p>
-  <h2 class="offset_header">APPROXIMATE COST TO OFFSET</h2>
-  <p>You can purchase <span class="emphasize"> ${{costs()}} </span> of carbon offsets to balance your emissions. Click here to learn more</p>
+    </div>
+  <div class="total_container">
+    <h2 class="total_header">TOTAL</h2>
+    <p>Your carbon foodprint is <span class="emphasize">{{total()}} kg of CO<sub>2</sub>e. </span>This is to equivalent the emissions of driving <span class="emphasize">{{miles()}} miles </span>in a car.</p>
+  </div>
+  <div class="offset_container">
+    <h2 class="offset_header">APPROXIMATE COST TO OFFSET</h2>
+    <p>You can purchase <span class="emphasize"> ${{costs()}} </span> of carbon offsets to balance your emissions. Click here to learn more</p>
+  </div>
 </div>
