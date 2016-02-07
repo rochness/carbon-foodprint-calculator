@@ -62,14 +62,24 @@
             <div class="modal-dialog" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                  <h4 class="modal-title" id="myModalLabel">Update Ingredient Details: {{ingred.ingredient.name}} </h4>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" style="font-size: 30px;">&times;</span></button>
+                  <h4 class="modal-title" id="myModalLabel">Update Ingredient Details: <strong>{{ingred.ingredient.name}}</strong> </h4>
                 </div>
                 <div class="modal-body">
                   <form>
-                    <div class="modalText">Quantity (in pounds): </div>
+                    <div class="modalText">Quantity:
                     <input class="update_input" type="number" name="quantity" ng-model="ingred.quantity">
-                    <div> Unit of measurement: </div>
+                    </div>
+                    <div class="modalText"> Unit of measurement:
+                      <div class="styled-select">
+                        <select class="unit_type" name="unit" ng-model="ingred.unit" required>
+                          <option value="pounds"> pounds </option>
+                          <option value="ounces"> ounces </option>
+                          <option value="kilograms"> kilograms </option>
+                          <option value="grams"> grams </option>
+                        </select>
+                      </div>
+                    </div>
                   </form>
                 </div>
                 <div class="modal-footer">
