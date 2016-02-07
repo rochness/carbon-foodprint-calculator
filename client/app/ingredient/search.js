@@ -1,6 +1,6 @@
-angular.module('calculator.search', [])
+angular.module('calculator.search', ['ngSanitize', 'MassAutoComplete'])
 
-.controller('SearchController', function ($rootScope, $scope, Ingredients) {
+.controller('SearchController', function ($rootScope, $scope, $sce, $q, Ingredients) {
   /*
   $scope.item holds all the info needed to calculate emissions of a particular ingredient that is selected. It has the following properties:
     ingredient - the ingredient object with its name, category labels, emissions, transport emissions, etc.
@@ -29,14 +29,15 @@ angular.module('calculator.search', [])
   //Boolean indicating whether or not the input ingredient exists in DB
   $scope.found = true;
 
+  $scope.input = {};
 
   $scope.$on('selected', function(event, args) {
-    // console.log('heard trigger from $scope.emit: ', args);
     $scope.selected = args.selected;
     $scope.item = args.item;
-    // var item = $scope.item;
-    // $scope.$broadcast('item', {item});
+
   });
+
+  var autoCompleteIngreds = [];
 
   $scope.setAndEmitSelected = function(bool) {
     $scope.selected = bool;
@@ -52,7 +53,6 @@ angular.module('calculator.search', [])
     } else {
       $scope.found = false;
     }
-    // console.log($scope.input);
   };
 
   $scope.setInput = function(newInput){
@@ -71,7 +71,7 @@ angular.module('calculator.search', [])
 
   $scope.setIngred = function (ingred) {
     if(!ingred){
-      $scope.item.ingredient = Ingredients.searchIngred($scope.input);
+      $scope.item.ingredient = Ingredients.searchIngred($scope.input.value);
     } else {
       $scope.item.ingredient = ingred;
     }
@@ -82,19 +82,13 @@ angular.module('calculator.search', [])
       $scope.setAndEmitSelected(true);
       $scope.item.transportTypes = $scope.getTransportTypes($scope.item.ingredient);
       $rootScope.item = $scope.item;
-
-      // console.log('scope.selected: ', $scope.selected);
     }
   };
-
-  // $scope.setTransportModifier = function (transportType) {
-  //   $scope.item.modifier = $scope.item.ingredient[transportType];
-  // };
 
   $scope.reset = function (){
     // console.log('scope.selected at beg of reset call: ', $scope.selected);
     $scope.item = {};
-    $scope.input = '';
+    $scope.input.value = '';
     $rootScope.item = {};
     $scope.setAndEmitSelected(false);
   };
@@ -113,11 +107,36 @@ angular.module('calculator.search', [])
     Ingredients.allIngredients() // Makes a GET request to an API to get data
       .then(function(ingreds) { // Upon receiving the data in response to the request, do something with the data (named ingreds)
         $scope.allIngreds = ingreds;
+        autoCompleteIngreds = _.map(ingreds, function(ingredient) {
+          return ingredient;
+        });
         console.log('1: this line gets called after receiving the response data in getAllIngreds', ingreds);
       }).catch(function(err) {
         console.error(err);
       });
     console.log('2: last line in getAllIngreds function is called');
+  };
+
+  /************** MassAutoComplete functionality ************/
+  function suggest_ingred(term) {
+    console.log('term: ', term);
+    var q = term.toLowerCase().trim();
+    var results = [];
+
+    for(var i = 0; i < autoCompleteIngreds.length && results.length < 10; i++) {
+      var ingredName = autoCompleteIngreds[i].name;
+      var ingredValue = autoCompleteIngreds[i];
+      if(ingredName.toLowerCase().indexOf(q) === 0){
+        results.push({label: ingredName, value: ingredName});
+        console.log('results in suggest_ingred: ', results);
+      }
+    }
+    return results;
+  }
+
+
+  $scope.autocomplete_options = {
+    suggest: suggest_ingred
   };
 
   $scope.getAllIngreds();

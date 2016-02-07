@@ -3,7 +3,9 @@ angular.module('calculator', [
   'calculator.search',
   'calculator.userIngreds',
   'angular.filter',
-  'ui.router'
+  'ui.router',
+  'ngSanitize',
+  'MassAutoComplete'
 ]).config(function($stateProvider, $urlRouterProvider){
     $urlRouterProvider.otherwise('/');
     $stateProvider
