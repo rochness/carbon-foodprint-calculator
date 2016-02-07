@@ -52,10 +52,10 @@
       <tr>Fruits and Vegetables</tr>
       <tr class="breakdown_text" ng-repeat= "ingred in getUserIngreds() | broadCategoryFilter: 'Fruit and Vegetables'">
         <td class="emissionButtonContainer">
-          <a data-toggle="modal" ng-attr-data-target={{'#'+ingred.ingredient.objectId+'modal'}}>
+          <a class="delete_edit_icons" data-toggle="modal" ng-attr-data-target={{'#'+ingred.ingredient.objectId+'modal'}}>
             <img src="edit_icon.png" width="15" height="15"/>
           </a>
-          <a ng-click="remove(ingred)">
+          <a class="delete_edit_icons" ng-click="remove(ingred)">
             <img src="remove-icon.png" width="15" height="15"/>
           </a>
           <div class="modal fade" ng-attr-id={{ingred.ingredient.objectId+'modal'}} tabindex="-1" role="dialog" aria-labelledby="myModalLabel">

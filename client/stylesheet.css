@@ -92,6 +92,10 @@ input, button {
 	color: #8c8c8c;
 }
 
+.category_links {
+	cursor: pointer;
+}
+
 #wrapper {
 	margin: 0 55px;
 	padding-bottom: 50px;
@@ -264,6 +268,22 @@ table {
 
 .add_button:hover {
 	background: #99ebff;
+}
+
+.add_button:active {
+	background: #ccf5ff;
+}
+
+.add_button:focus {
+	background: #ccf5ff;
+}
+
+.add_button:target {
+	background: #ccf5ff;
+}
+
+.delete_edit_icons {
+	cursor: pointer;
 }
 
 .cancel_button {
