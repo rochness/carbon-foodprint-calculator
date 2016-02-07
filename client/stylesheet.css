@@ -303,16 +303,25 @@ table {
 }
 
 .update_input {
-	width: 50px;
+	width: 40px;
 	position: relative;
+	padding-left: 8px;
 }
-
+.modal-dialog {
+	width: 500px;
+	margin: 200px auto;
+}
 .modalText {
 	position: relative;
 	text-align: left;
 	font-size: 16px;
+	padding-left: 50px;
+	padding-bottom: 10px;
 }
-
+.modal_transport_list_text {
+	font-size: 14px;
+	color: #a6a6a6;
+}
 .emphasize {
 	/*color: #337ab7;*/
 	font-weight: bold;

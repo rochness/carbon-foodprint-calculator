@@ -80,11 +80,18 @@
                         </select>
                       </div>
                     </div>
+                    <div class="modalText"> Transportation method:
+                      <!-- <form ng-model={{ingred.transportMo}}> -->
+                      <ul class="list_transport_inputs">
+                        <li class="modal_transport_list_text" ng-repeat="transportType in ingred.transportTypes"><input class="transport_inputs" type="radio" name="distance" ng-model="ingred.transportModifier" ng-value="transportType" required > {{transportPrompts[transportType]}} </li>
+                        <li class="modal_transport_list_text"> <input class="transport_inputs" type="radio" name="distance" ng-model="ingred.transportModifier" value="null" required> I don't know </li>
+                      </ul>
+                      <!-- </form> -->
+                    </div>
                   </form>
                 </div>
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                  <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="addIngredient()">Save changes</button>
+                  <button type="button" class="btn btn-default add_button" data-dismiss="modal" ng-click="addIngredient()">Update and Close</button>
                 </div>
               </div>
             </div>
