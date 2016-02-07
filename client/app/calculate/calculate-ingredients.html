@@ -16,13 +16,24 @@
             <div class="modal-dialog" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" style="font-size:30px;">&times;</span></button>
                   <h4 class="modal-title" id="myModalLabel">Update Ingredient Details: {{ingred.ingredient.name}} </h4>
                 </div>
                 <div class="modal-body">
                   <form>
                     <div class="modalText">Quantity: </div>
                     <input class="update_input" type="number" name="quantity" ng-model="ingred.quantity">
+                    <!-- <div class="modalText">Unit of measurement: </div> -->
+                    <!-- <div class="styled-select"> -->
+                     <!--  <select class="unit_type" name="unit" ng-model="ingred.unit" required>
+                        <option value ="" disabled selected> Unit </option>
+                        <option value="pounds"> pounds </option>
+                        <option value="ounces"> ounces </option>
+                        <option value="kilograms"> kilograms </option>
+                        <option value="grams"> grams </option>
+                      </select> -->
+                    <!-- </div> -->
+                    <!-- <div class="modalText">Transported by: </div> -->
                   </form>
                 </div>
                 <div class="modal-footer">
@@ -41,13 +52,13 @@
       <tr>Fruits and Vegetables</tr>
       <tr class="breakdown_text" ng-repeat= "ingred in getUserIngreds() | broadCategoryFilter: 'Fruit and Vegetables'">
         <td class="emissionButtonContainer">
-          <a data-toggle="modal" ng-attr-data-target={{'#'+ingred.ingredient.name+'modal'}}>
+          <a data-toggle="modal" ng-attr-data-target={{'#'+ingred.ingredient.objectId+'modal'}}>
             <img src="edit_icon.png" width="15" height="15"/>
           </a>
           <a ng-click="remove(ingred)">
             <img src="remove-icon.png" width="15" height="15"/>
           </a>
-          <div class="modal fade" ng-attr-id={{ingred.ingredient.name+'modal'}} tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal fade" ng-attr-id={{ingred.ingredient.objectId+'modal'}} tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
             <div class="modal-dialog" role="document">
               <div class="modal-content">
                 <div class="modal-header">
@@ -58,6 +69,7 @@
                   <form>
                     <div class="modalText">Quantity (in pounds): </div>
                     <input class="update_input" type="number" name="quantity" ng-model="ingred.quantity">
+                    <div> Unit of measurement: </div>
                   </form>
                 </div>
                 <div class="modal-footer">
@@ -110,10 +122,21 @@
     </div>
   <div class="total_container">
     <h2 class="total_header">TOTAL</h2>
-    <p>Your carbon foodprint is <span class="emphasize">{{total()}} kg of CO<sub>2</sub>e. </span>This is to equivalent the emissions of driving <span class="emphasize">{{miles()}} miles </span>in a car.</p>
+    <div>
+      <div class="total_text"><span class="emphasize">{{total()}} kg of CO<sub>2</sub>e </span> </div>
+      <div>
+        <table>
+          <tr>
+            <td class="mileage_text"> This is equivalent to the emissions of driving: </td>
+            <td class="mileage"> <div class="mileage_div"><span class="emphasize">{{miles()}} miles </span></div></td>
+          </tr>
+        </table>
+      </div>
+    </div>
   </div>
   <div class="offset_container">
     <h2 class="offset_header">APPROXIMATE COST TO OFFSET</h2>
-    <p>You can purchase <span class="emphasize"> ${{costs()}} </span> of carbon offsets to balance your emissions. Click here to learn more</p>
+    <div class="total_text"><span class="emphasize"> ${{costs()}} </span> </div>
+    <div class="call_to_offset"><p><a>Click here</a> to offset</p></div>
   </div>
 </div>

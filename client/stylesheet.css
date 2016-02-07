@@ -313,9 +313,39 @@ table {
 }
 
 .emphasize {
-	color: #337ab7;
+	/*color: #337ab7;*/
 	font-weight: bold;
 	font-size: 14px;
+	text-align: right;
+}
+
+.total_text {
+	width: 100%;
+	text-align: right;
+}
+
+table, tr {
+	height: 100%;
+}
+
+.mileage_text {
+	width: 60%;
+	vertical-align: middle;
+	height: 100%;
+}
+
+.mileage {
+	float: right;
+	color: red;
+	vertical-align: middle;
+	height: 100%;
+	display: table;
+}
+
+.mileage_div{
+	vertical-align: middle;
+	height: 100%;
+	display: table-cell;
 }
 
 .table_qty {
@@ -340,4 +370,8 @@ table {
 
 .offset_container {
 	padding-top: 10px;
+}
+
+.call_to_offset {
+	text-align: center;
 }
