@@ -118,6 +118,8 @@ input, button {
 	height: 40px;
 	width: 100%;
 	padding-left: 10px;
+	color: black;
+	border: 1px solid #b3b3b3;
 }
 
 .enter_qty_container {
@@ -299,7 +301,7 @@ table {
 }
 
 .auto_complete_div {
-	width: 70%;
+	width: 90%;
 	display: inline-block;
 }
 

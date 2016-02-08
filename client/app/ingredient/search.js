@@ -47,18 +47,18 @@ angular.module('calculator.search', ['ngSanitize', 'MassAutoComplete'])
     $scope.$emit('selected', {selected, item});
   };
 
-  $scope.toggleFound = function(isSubmitted, form){
-    if(isSubmitted && $scope.found === false) {
-      $scope.found = true;
-      form.$setPristine();
-    } else {
-      $scope.found = false;
+  $scope.toggleFound = function(isSubmitted, form, keyPressEvent){
+    // console.log('toggledFound called, isSubmitted: ' + isSubmitted + ' found: ' + $scope.found);
+    if(keyPressEvent && keyPressEvent !== 13){
+      if(isSubmitted && $scope.found === false) {
+        $scope.found = true;
+        form.$setPristine();
+      } else if (isSubmitted && $scope.found === true) {
+        $scope.found = false;
+      } else {
+        // $scope.found = false;
+      }
     }
-    // if($scope.found === false){
-    //   $scope.found = true;
-    // } else {
-    //   $scope.found = false;
-    // }
   };
 
   $scope.setInput = function(newInput){
@@ -75,7 +75,7 @@ angular.module('calculator.search', ['ngSanitize', 'MassAutoComplete'])
     return result;
   }
 
-  $scope.setIngred = function (ingred) {
+  $scope.setIngred = function (ingred, isFormSubmitted, form) {
     console.log('setIngred called');
     if(!ingred){
       $scope.item.ingredient = Ingredients.searchIngred($scope.input.value);
@@ -83,7 +83,7 @@ angular.module('calculator.search', ['ngSanitize', 'MassAutoComplete'])
       $scope.item.ingredient = ingred;
     }
     if($scope.item.ingredient === null){
-      $scope.toggleFound();
+      $scope.toggleFound(isFormSubmitted, form);
     } else {
       // $scope.toggleSelected();
       $scope.setAndEmitSelected(true);
@@ -119,10 +119,10 @@ angular.module('calculator.search', ['ngSanitize', 'MassAutoComplete'])
         });
 
         fuzzySearch = new Fuse(autoCompleteIngreds, {
-            keys: ['name', 'broad_category', 'sub_broad_category'],
+            keys: ['name', 'broad_category', 'category', 'sub_broad_category'],
             shouldSort: true,
             caseSensitive: false,
-            threshold: 0.4
+            threshold: 0.3
           });
 
         console.log('1: this line gets called after receiving the response data in getAllIngreds', ingreds);
@@ -135,7 +135,7 @@ angular.module('calculator.search', ['ngSanitize', 'MassAutoComplete'])
   /************** MassAutoComplete functionality ************/
 
   function suggest_ingred(term) {
-    console.log('term: ', term);
+    // console.log('term: ', term);
     // console.log('autoCompleteIngreds: ', autoCompleteIngreds.length);
     var q = term.toLowerCase().trim();
     var autoResults = [];
@@ -143,7 +143,6 @@ angular.module('calculator.search', ['ngSanitize', 'MassAutoComplete'])
                         .search(term)
                         .slice(0,12)
                         .map(function(ingred) {
-                          console.log('ingred: ', ingred);
                           return {
                             value: ingred.name,
                             label: ingred.name
@@ -156,7 +155,6 @@ angular.module('calculator.search', ['ngSanitize', 'MassAutoComplete'])
       var ingredValue = autoCompleteIngreds[i];
       if(ingredName.toLowerCase().indexOf(q) === 0){
         autoResults.push({label: ingredName, value: ingredName});
-        console.log('results in suggest_ingred: ', autoResults);
       }
     }
 

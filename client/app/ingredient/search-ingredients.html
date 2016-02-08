@@ -1,18 +1,11 @@
 <div class = "enter_ingred">
-  <form class="searchForm" name="searchForm" ng-submit="setIngred()">
+  <form class="searchForm" name="searchForm" ng-submit="setIngred(null, true, searchForm)">
     <div mass-autocomplete class="auto_complete_div">
-      <input class="ingred_input" type="text" name="ingred" ng-model="input.value" ng-keypress="toggleFound(searchForm.$submitted, searchForm);" placeholder= "Type the name of an ingredient..." mass-autocomplete-item="autocomplete_options">
+      <input class="ingred_input" type="text" name="ingred" ng-model="input.value" ng-keyup="toggleFound(searchForm.$submitted, searchForm, $event);" placeholder= "Type the name of an ingredient..." mass-autocomplete-item="autocomplete_options">
     </div>
-    <button class="btn btn-default search_button" type="submit"> Search for Ingredient </button>
   </form>
 
   <div ng-if="found === false">
-    <p>Sorry, we could not find your ingredient in our database. Try browsing by category or a different search term. </p>
- <!--    <ul>
-      <li ng-repeat="(ingred, ingObj) in allIngreds | fuzzy:input">
-      <a class ="menu_item" ng-click= "setIngred(ingObj);setInput(item.ingredient.name);toggleFound()">{{ingObj.name}}</a>
-      </li>
-    </ul> -->
-    <button class="ok_button" ng-click="reset(); searchForm.$setPristine(); toggleFound()"> New Search </button>
+    <p>Sorry, we could not find your ingredient in our database. Try browsing by category instead. </p>
   </div>
 </div>
