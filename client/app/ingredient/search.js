@@ -47,12 +47,18 @@ angular.module('calculator.search', ['ngSanitize', 'MassAutoComplete'])
     $scope.$emit('selected', {selected, item});
   };
 
-  $scope.toggleFound = function(){
-    if($scope.found === false){
+  $scope.toggleFound = function(isSubmitted, form){
+    if(isSubmitted && $scope.found === false) {
       $scope.found = true;
+      form.$setPristine();
     } else {
       $scope.found = false;
     }
+    // if($scope.found === false){
+    //   $scope.found = true;
+    // } else {
+    //   $scope.found = false;
+    // }
   };
 
   $scope.setInput = function(newInput){
@@ -70,6 +76,7 @@ angular.module('calculator.search', ['ngSanitize', 'MassAutoComplete'])
   }
 
   $scope.setIngred = function (ingred) {
+    console.log('setIngred called');
     if(!ingred){
       $scope.item.ingredient = Ingredients.searchIngred($scope.input.value);
     } else {
