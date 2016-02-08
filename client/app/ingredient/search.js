@@ -164,13 +164,12 @@ angular.module('calculator.search', ['ngSanitize', 'MassAutoComplete'])
     });
 
     var noResult = [{label: "Can't find your ingredient? Try browsing by category.", value: ''}];
-
     // console.log('auto: ', autoResults)
     // console.log('fuzzy: ', fuzzyResults);
     // console.log('combined: ', combinedResults);
     // console.log('uniq: ', uniqCombinedResults);
 
-    return uniqCombinedResults.length === 0 ? noResult : uniqCombinedResults.slice(0,12);
+    return uniqCombinedResults.length === 0 ? noResult : uniqCombinedResults.slice(0,12).concat(noResult);
   }
 
   $scope.autocomplete_options = {

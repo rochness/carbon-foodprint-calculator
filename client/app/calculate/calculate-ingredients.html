@@ -6,45 +6,52 @@
       <tr>  Meats and Seafood </tr>
       <tr class="breakdown_text" ng-repeat= "ingred in getUserIngreds() | broadCategoryFilter: 'Meat and Fish' ">
         <td class="emissionButtonContainer">
-          <a data-toggle="modal" ng-attr-data-target={{'#'+ingred.ingredient.name+'modal'}}>
+          <a class="delete_edit_icons" data-toggle="modal" ng-attr-data-target={{'#'+ingred.ingredient.objectId+'modal'}}>
             <img src="edit_icon.png" width="15" height="15"/>
           </a>
-          <a ng-click="remove(ingred)">
+          <a class="delete_edit_icons" ng-click="remove(ingred)">
             <img src="remove-icon.png" width="15" height="15"/>
           </a>
-          <div class="modal fade" ng-attr-id={{ingred.ingredient.name+'modal'}} tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal fade" ng-attr-id={{ingred.ingredient.objectId+'modal'}} tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
             <div class="modal-dialog" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" style="font-size:30px;">&times;</span></button>
-                  <h4 class="modal-title" id="myModalLabel">Update Ingredient Details: {{ingred.ingredient.name}} </h4>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" style="font-size: 30px;">&times;</span></button>
+                  <h4 class="modal-title" id="myModalLabel">Update Ingredient Details: <strong>{{ingred.ingredient.name}}</strong> </h4>
                 </div>
                 <div class="modal-body">
                   <form>
-                    <div class="modalText">Quantity: </div>
+                    <div class="modalText">Quantity:
                     <input class="update_input" type="number" name="quantity" ng-model="ingred.quantity">
-                    <!-- <div class="modalText">Unit of measurement: </div> -->
-                    <!-- <div class="styled-select"> -->
-                     <!--  <select class="unit_type" name="unit" ng-model="ingred.unit" required>
-                        <option value ="" disabled selected> Unit </option>
-                        <option value="pounds"> pounds </option>
-                        <option value="ounces"> ounces </option>
-                        <option value="kilograms"> kilograms </option>
-                        <option value="grams"> grams </option>
-                      </select> -->
-                    <!-- </div> -->
-                    <!-- <div class="modalText">Transported by: </div> -->
+                    </div>
+                    <div class="modalText"> Unit of measurement:
+                      <div class="styled-select">
+                        <select class="unit_type" name="unit" ng-model="ingred.unit" required>
+                          <option value="pounds"> pounds </option>
+                          <option value="ounces"> ounces </option>
+                          <option value="kilograms"> kilograms </option>
+                          <option value="grams"> grams </option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="modalText"> Transportation method:
+                      <!-- <form ng-model={{ingred.transportMo}}> -->
+                      <ul class="list_transport_inputs">
+                        <li class="modal_transport_list_text" ng-repeat="transportType in ingred.transportTypes"><input class="transport_inputs" type="radio" name="distance" ng-model="ingred.transportModifier" ng-value="transportType" required > {{transportPrompts[transportType]}} </li>
+                        <li class="modal_transport_list_text"> <input class="transport_inputs" type="radio" name="distance" ng-model="ingred.transportModifier" value="null" required> I don't know </li>
+                      </ul>
+                      <!-- </form> -->
+                    </div>
                   </form>
                 </div>
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                  <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="addIngredient()">Save changes</button>
+                  <button type="button" class="btn btn-default add_button" data-dismiss="modal" ng-click="addIngredient()">Update and Close</button>
                 </div>
               </div>
             </div>
           </div>
         </td>
-        <td class="qty_ingred_breakdown"><form class="table_qty"><input class="calc_qty_input" type="number" ng-model="ingred.quantity"></form> <span> {{ingred.unit}} of {{ingred.ingredient.name}} </span> </td>
+        <td class="qty_ingred_breakdown"><form class="table_qty"><input type="number" ng-model="ingred.quantity"></form> <span> {{ingred.unit}} of {{ingred.ingredient.name}} </span> </td>
         <td class ="emissions"> {{subTotal(ingred)}} kg CO<sub>2</sub>e </td>
       </tr>
     </table>
@@ -104,36 +111,54 @@
     <table>
       <tr>Other</tr>
       <tr class="breakdown_text" ng-repeat= "ingred in getUserIngreds() | broadCategoryFilter: 'Other'">
-        <td class="emissionButtonContainer">
-          <a data-toggle="modal" ng-attr-data-target={{'#'+ingred.ingredient.name+'modal'}}>
-            <img src="edit_icon.png" width="15" height="15"/>
-          </a>
-          <a ng-click="remove(ingred)">
-            <img src="remove-icon.png" width="15" height="15"/>
-          </a>
-          <div class="modal fade" ng-attr-id={{ingred.ingredient.name+'modal'}} tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                  <h4 class="modal-title" id="myModalLabel">Update Ingredient Details: {{ingred.ingredient.name}} </h4>
-                </div>
-                <div class="modal-body">
-                  <form>
-                    <div class="modalText">Quantity (in pounds): </div>
-                    <input class="update_input" type="number" name="quantity" ng-model="ingred.quantity">
-                  </form>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                  <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="addIngredient()">Save changes</button>
-                </div>
+      <td class="emissionButtonContainer">
+        <a class="delete_edit_icons" data-toggle="modal" ng-attr-data-target={{'#'+ingred.ingredient.objectId+'modal'}}>
+          <img src="edit_icon.png" width="15" height="15"/>
+        </a>
+        <a class="delete_edit_icons" ng-click="remove(ingred)">
+          <img src="remove-icon.png" width="15" height="15"/>
+        </a>
+        <div class="modal fade" ng-attr-id={{ingred.ingredient.objectId+'modal'}} tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" style="font-size: 30px;">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Update Ingredient Details: <strong>{{ingred.ingredient.name}}</strong> </h4>
+              </div>
+              <div class="modal-body">
+                <form>
+                  <div class="modalText">Quantity:
+                  <input class="update_input" type="number" name="quantity" ng-model="ingred.quantity">
+                  </div>
+                  <div class="modalText"> Unit of measurement:
+                    <div class="styled-select">
+                      <select class="unit_type" name="unit" ng-model="ingred.unit" required>
+                        <option value="pounds"> pounds </option>
+                        <option value="ounces"> ounces </option>
+                        <option value="kilograms"> kilograms </option>
+                        <option value="grams"> grams </option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="modalText"> Transportation method:
+                    <!-- <form ng-model={{ingred.transportMo}}> -->
+                    <ul class="list_transport_inputs">
+                      <li class="modal_transport_list_text" ng-repeat="transportType in ingred.transportTypes"><input class="transport_inputs" type="radio" name="distance" ng-model="ingred.transportModifier" ng-value="transportType" required > {{transportPrompts[transportType]}} </li>
+                      <li class="modal_transport_list_text"> <input class="transport_inputs" type="radio" name="distance" ng-model="ingred.transportModifier" value="null" required> I don't know </li>
+                    </ul>
+                    <!-- </form> -->
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default add_button" data-dismiss="modal" ng-click="addIngredient()">Update and Close</button>
               </div>
             </div>
           </div>
-        </td>
-        <td class="qty_ingred_breakdown"><form class="table_qty"><input type="number" ng-model="ingred.quantity"></form> <span> {{ingred.unit}} of {{ingred.ingredient.name}} </span> </td>
-        <td class ="emissions"> {{subTotal(ingred)}} kg CO<sub>2</sub>e </td>
+        </div>
+      </td>
+      <td class="qty_ingred_breakdown"><form class="table_qty"><input type="number" ng-model="ingred.quantity"></form> <span> {{ingred.unit}} of {{ingred.ingredient.name}} </span> </td>
+      <td class ="emissions"> {{subTotal(ingred)}} kg CO<sub>2</sub>e </td>
       </tr>
     </table>
     </div>
