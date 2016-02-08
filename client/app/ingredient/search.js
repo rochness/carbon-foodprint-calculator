@@ -86,7 +86,6 @@ angular.module('calculator.search', ['ngSanitize', 'MassAutoComplete'])
   };
 
   $scope.reset = function (){
-    // console.log('scope.selected at beg of reset call: ', $scope.selected);
     $scope.item = {};
     $scope.input.value = '';
     $rootScope.item = {};
@@ -94,7 +93,6 @@ angular.module('calculator.search', ['ngSanitize', 'MassAutoComplete'])
   };
 
   $scope.addToList = function(isValidForm, form) {
-    console.log('addToList called: ', isValidForm);
     if(isValidForm) {
       console.log('added item to list ', $scope.item);
       Ingredients.addIngredient($scope.item);
@@ -103,6 +101,8 @@ angular.module('calculator.search', ['ngSanitize', 'MassAutoComplete'])
     }
   };
 
+  var fuzzySearch;
+
   $scope.getAllIngreds = function () {
     Ingredients.allIngredients() // Makes a GET request to an API to get data
       .then(function(ingreds) { // Upon receiving the data in response to the request, do something with the data (named ingreds)
@@ -110,6 +110,14 @@ angular.module('calculator.search', ['ngSanitize', 'MassAutoComplete'])
         autoCompleteIngreds = _.map(ingreds, function(ingredient) {
           return ingredient;
         });
+
+        fuzzySearch = new Fuse(autoCompleteIngreds, {
+            keys: ['name', 'broad_category', 'sub_broad_category'],
+            shouldSort: true,
+            caseSensitive: false,
+            threshold: 0.4
+          });
+
         console.log('1: this line gets called after receiving the response data in getAllIngreds', ingreds);
       }).catch(function(err) {
         console.error(err);
@@ -118,10 +126,16 @@ angular.module('calculator.search', ['ngSanitize', 'MassAutoComplete'])
   };
 
   /************** MassAutoComplete functionality ************/
+
   function suggest_ingred(term) {
     console.log('term: ', term);
+    // console.log('autoCompleteIngreds: ', autoCompleteIngreds.length);
     var q = term.toLowerCase().trim();
     var results = [];
+
+    // if(!term)
+    //     return [];
+
 
     for(var i = 0; i < autoCompleteIngreds.length && results.length < 10; i++) {
       var ingredName = autoCompleteIngreds[i].name;
@@ -131,9 +145,23 @@ angular.module('calculator.search', ['ngSanitize', 'MassAutoComplete'])
         console.log('results in suggest_ingred: ', results);
       }
     }
-    return results;
-  }
 
+    console.log('fuzzy search result: ', fuzzySearch.search(term).slice(0,10));
+
+    return results.concat(fuzzySearch
+      .search(term)
+      .slice(0,15)
+      .map(function(ingred) {
+        console.log('ingred: ', ingred);
+        // var val = autoCompleteIngreds[i];
+        return {
+          value: ingred.name,
+          label: ingred.name
+          // label: $sce.trustAsHtml(highlight(val, term))
+        };
+      }));
+    // return results;
+  }
 
   $scope.autocomplete_options = {
     suggest: suggest_ingred
