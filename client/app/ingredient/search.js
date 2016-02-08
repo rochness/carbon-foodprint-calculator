@@ -131,36 +131,41 @@ angular.module('calculator.search', ['ngSanitize', 'MassAutoComplete'])
     console.log('term: ', term);
     // console.log('autoCompleteIngreds: ', autoCompleteIngreds.length);
     var q = term.toLowerCase().trim();
-    var results = [];
+    var autoResults = [];
+    var fuzzyResults = fuzzySearch
+                        .search(term)
+                        .slice(0,12)
+                        .map(function(ingred) {
+                          console.log('ingred: ', ingred);
+                          return {
+                            value: ingred.name,
+                            label: ingred.name
+                            // label: $sce.trustAsHtml(highlight(val, term))
+                          };
+                        });
 
-    // if(!term)
-    //     return [];
-
-
-    for(var i = 0; i < autoCompleteIngreds.length && results.length < 10; i++) {
+    for(var i = 0; i < autoCompleteIngreds.length && autoResults.length < 10; i++) {
       var ingredName = autoCompleteIngreds[i].name;
       var ingredValue = autoCompleteIngreds[i];
       if(ingredName.toLowerCase().indexOf(q) === 0){
-        results.push({label: ingredName, value: ingredName});
-        console.log('results in suggest_ingred: ', results);
+        autoResults.push({label: ingredName, value: ingredName});
+        console.log('results in suggest_ingred: ', autoResults);
       }
     }
 
-    console.log('fuzzy search result: ', fuzzySearch.search(term).slice(0,10));
+    var combinedResults = autoResults.concat(fuzzyResults);
+    var uniqCombinedResults = _.uniq(combinedResults, function(item) {
+      return item.label;
+    });
 
-    return results.concat(fuzzySearch
-      .search(term)
-      .slice(0,15)
-      .map(function(ingred) {
-        console.log('ingred: ', ingred);
-        // var val = autoCompleteIngreds[i];
-        return {
-          value: ingred.name,
-          label: ingred.name
-          // label: $sce.trustAsHtml(highlight(val, term))
-        };
-      }));
-    // return results;
+    var noResult = [{label: "Can't find your ingredient? Try browsing by category.", value: ''}];
+
+    // console.log('auto: ', autoResults)
+    // console.log('fuzzy: ', fuzzyResults);
+    // console.log('combined: ', combinedResults);
+    // console.log('uniq: ', uniqCombinedResults);
+
+    return uniqCombinedResults.length === 0 ? noResult : uniqCombinedResults.slice(0,12);
   }
 
   $scope.autocomplete_options = {
