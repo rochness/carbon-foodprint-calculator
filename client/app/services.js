@@ -1,13 +1,7 @@
 angular.module('calculator.services', [])
 
 .factory('Ingredients', function ($http) {
-
-  var parseHeaders = {
-    'X-Parse-Application-Id': 'seSR5LEKwzjFttoeXj1vv65ldaNUYANE0xjXfufS',
-    'X-Parse-REST-API-Key': 'i8zMKmgPpDYF7edHPyQsr8vDTusoqm9V1NPufUks'
-  };
-
-  var parseUrl = 'https://api.parse.com/1/classes/Ingredients';
+  var fireBaseUrl = 'https://dazzling-inferno-125.firebaseio.com/results.json'
 
   var ingredDB = {};
   var userIngredients = {};
@@ -55,9 +49,9 @@ angular.module('calculator.services', [])
   };
 
   var allIngredients = function() {
-    return $http({method: 'GET', url: parseUrl, headers: parseHeaders, params:{limit: 500}})
+    return $http({method: 'GET', url: fireBaseUrl, headers: {}})
       .then(function(response) {
-        var data = response.data.results;
+        var data = response.data;
         data.forEach(function(ingred) {
           var ingredKey = ingred.ingredient.toLowerCase();
           ingredDB[ingredKey] = ingred;
