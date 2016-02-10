@@ -101,7 +101,7 @@ angular.module('calculator.search', ['ngSanitize', 'MassAutoComplete'])
 
   $scope.addToList = function(isValidForm, form) {
     if(isValidForm) {
-      console.log('added item to list ', $scope.item);
+      // console.log('added item to list ', $scope.item);
       Ingredients.addIngredient($scope.item);
       $scope.reset();
       form.$setPristine();
@@ -135,8 +135,6 @@ angular.module('calculator.search', ['ngSanitize', 'MassAutoComplete'])
   /************** MassAutoComplete functionality ************/
 
   function suggest_ingred(term) {
-    // console.log('term: ', term);
-    // console.log('autoCompleteIngreds: ', autoCompleteIngreds.length);
     var q = term.toLowerCase().trim();
     var autoResults = [];
     var fuzzyResults = fuzzySearch
@@ -164,10 +162,6 @@ angular.module('calculator.search', ['ngSanitize', 'MassAutoComplete'])
     });
 
     var noResult = [{label: "Can't find your ingredient? Try browsing by category.", value: ''}];
-    // console.log('auto: ', autoResults)
-    // console.log('fuzzy: ', fuzzyResults);
-    // console.log('combined: ', combinedResults);
-    // console.log('uniq: ', uniqCombinedResults);
 
     return uniqCombinedResults.length === 0 ? noResult : uniqCombinedResults.slice(0,12).concat(noResult);
   }
