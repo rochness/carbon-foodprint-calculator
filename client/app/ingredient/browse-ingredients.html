@@ -11,7 +11,7 @@
               <span class="glyphicon glyphicon-chevron-right"></span>
               </a>
               <ul class="dropdown-menu columns">
-                <li ng-repeat ="(ingred, ingObj) in filteredIngreds = (allIngreds | categoryFilter: category | orderBy:ingObj.name)"><a class="category_links" ng-model="input" ng-click="setIngred(ingObj); toggleSelected()">{{ingObj.name}} </a></li>
+                <li ng-repeat ="(ingred, ingObj) in filteredIngreds = (allIngreds | categoryFilter: category) | orderBy: 'name'"><a class="category_links" ng-model="input" ng-click="setIngred(ingObj); toggleSelected()">{{ingObj.name}}</a></li>
               </ul>
             </div>
           </li>
@@ -26,7 +26,7 @@
               <span class="glyphicon glyphicon-chevron-right"></span>
               </a>
               <ul class="dropdown-menu columns">
-                <li ng-repeat ="(ingred, ingObj) in allIngreds | categoryFilter: category"><a class="category_links" ng-model="input" ng-click="setIngred(ingObj); toggleSelected()">{{ingObj.name}}</a></li>
+                <li ng-repeat ="(ingred, ingObj) in filteredIngreds = (allIngreds | categoryFilter: category) | orderBy: 'name'"><a class="category_links" ng-model="input" ng-click="setIngred(ingObj); toggleSelected()">{{ingObj.name}}</a></li>
               </ul>
             </div>
           </li>
@@ -41,7 +41,7 @@
               <span class="glyphicon glyphicon-chevron-right"></span>
               </a>
               <ul class="dropdown-menu columns">
-                <li ng-repeat ="(ingred, ingObj) in allIngreds | categoryFilter: category"><a class="category_links" ng-model="input" ng-click="setIngred(ingObj); toggleSelected()">{{ingObj.name}}</a></li>
+                <li ng-repeat ="(ingred, ingObj) in filteredIngreds = (allIngreds | categoryFilter: category) | orderBy: 'name'"><a class="category_links" ng-model="input" ng-click="setIngred(ingObj); toggleSelected()">{{ingObj.name}}</a></li>
               </ul>
             </div>
           </li>
