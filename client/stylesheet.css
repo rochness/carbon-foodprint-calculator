@@ -180,7 +180,7 @@ input, button {
 .ingred_header {
 	text-align: center;
 	font-size: 16px;
-	background-color: #ccf5ff;
+	background-color: #D9EEFC;
 	padding: 7px;
 }
 
@@ -195,7 +195,7 @@ input, button {
 .offset_header {
 	text-align: center;
 	font-size: 16px;
-	background-color: #ccffcc;
+	background-color: #D9EBD9;
 	padding: 7px;
 }
 
@@ -270,7 +270,7 @@ table {
 	font-weight: bold;
 	float: right;
 	border: 1px solid #b3b3b3;
-	background: #ccf5ff;
+	background: #D9EEFC;
 	/*color: #a6a6a6;*/
 	margin-left: 8px;
 }
@@ -280,15 +280,15 @@ table {
 }
 
 .add_button:active {
-	background: #ccf5ff;
+	background: #D9EEFC;
 }
 
 .add_button:focus {
-	background: #ccf5ff;
+	background: #D9EEFC;
 }
 
 .add_button:target {
-	background: #ccf5ff;
+	background: #D9EEFC;
 }
 
 .delete_edit_icons {
