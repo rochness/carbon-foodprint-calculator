@@ -75,13 +75,17 @@ angular.module('calculator.search', ['ngSanitize', 'MassAutoComplete'])
     return result;
   }
 
-  $scope.setIngred = function (ingredName, isFormSubmitted, form) {
+  $scope.setIngred = function (ingred, isFormSubmitted, form) {
     console.log('setIngred called');
-    if(!ingredName){
+    if(!ingred){
       $scope.item.ingredient = Ingredients.searchIngred($scope.input.value);
     } else {
-      console.log('ingredName: ', ingredName);
-      $scope.item.ingredient = Ingredients.searchIngred(ingredName);
+      console.log('ingredName: ', ingred);
+      if(typeof ingred === 'string') {
+        $scope.item.ingredient = Ingredients.searchIngred(ingred);
+      } else {
+        $scope.item.ingredient = ingred;
+      }
     }
     if($scope.item.ingredient === null){
       $scope.toggleFound(isFormSubmitted, form);

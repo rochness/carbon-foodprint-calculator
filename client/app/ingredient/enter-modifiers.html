@@ -14,11 +14,13 @@
           </select>
         </div>
       </div>
-      <p><strong>How was your ingredient transported?</strong></p>
-      <ul class="list_transport_inputs">
-        <li ng-repeat="transportType in item.transportTypes"><input class="transport_inputs" type="radio" name="distance" ng-model="item.transportModifier" ng-value="transportType" required > {{transportPrompts[transportType]}} </li>
-        <li> <input class="transport_inputs" type="radio" name="distance" ng-model="item.transportModifier" value="null" required> I don't know </li>
-      </ul>
+      <div ng-if="item.transportTypes.length !== 0">
+        <p><strong>How was your ingredient transported?</strong></p>
+        <ul class="list_transport_inputs">
+          <li ng-repeat="transportType in item.transportTypes"><input class="transport_inputs" type="radio" name="distance" ng-model="item.transportModifier" ng-value="transportType" required > {{transportPrompts[transportType]}} </li>
+          <li> <input class="transport_inputs" type="radio" name="distance" ng-model="item.transportModifier" value="null" required> I don't know </li>
+        </ul>
+      </div>
       <div class="add_cancel_button_container">
         <div ng-if="quantityForm.distance.$error.required && quantityForm.$submitted">
           <p class='form-warning'> You must select how your ingredient was transported. If you're not sure, select the "I don't know" option. </p>

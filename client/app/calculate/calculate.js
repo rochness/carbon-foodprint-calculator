@@ -42,7 +42,7 @@ angular.module('calculator.userIngreds', [])
   };
 
   $scope.costs = function(qty, emiss){
-    return Math.ceil($scope.total() * (1/4) * 100)/100;
+    return Math.ceil($scope.total() * (.01) * 100)/100;
   };
 
   $scope.remove = function(ingredient){
