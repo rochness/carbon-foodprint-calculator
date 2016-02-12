@@ -6,6 +6,13 @@
   </form>
 
   <div ng-if="found === false">
+    <p>Did you mean: </p>
+    <ul class="did_you_mean_list">
+      <li ng-repeat="ingredName in suggestResults.slice(0, suggestResults.length-1).slice(0,5)">
+      <a class ="menu_item" ng-click= "setIngred(ingredName.label, true, searchForm)">{{ingredName.label}}</a>
+      </li>
+    </ul>
     <p>Sorry, we could not find your ingredient in our database. Try browsing by category instead. </p>
+
   </div>
 </div>

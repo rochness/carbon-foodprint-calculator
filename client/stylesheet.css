@@ -121,6 +121,13 @@ input, button {
 	color: black;
 	border: 1px solid #b3b3b3;
 }
+.did_you_mean_list {
+	list-style: none;
+}
+
+.menu_item {
+	cursor: pointer;
+}
 
 .enter_qty_container {
 	margin-bottom: 10px;

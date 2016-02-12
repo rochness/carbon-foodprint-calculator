@@ -75,12 +75,13 @@ angular.module('calculator.search', ['ngSanitize', 'MassAutoComplete'])
     return result;
   }
 
-  $scope.setIngred = function (ingred, isFormSubmitted, form) {
+  $scope.setIngred = function (ingredName, isFormSubmitted, form) {
     console.log('setIngred called');
-    if(!ingred){
+    if(!ingredName){
       $scope.item.ingredient = Ingredients.searchIngred($scope.input.value);
     } else {
-      $scope.item.ingredient = ingred;
+      console.log('ingredName: ', ingredName);
+      $scope.item.ingredient = Ingredients.searchIngred(ingredName);
     }
     if($scope.item.ingredient === null){
       $scope.toggleFound(isFormSubmitted, form);
@@ -133,8 +134,8 @@ angular.module('calculator.search', ['ngSanitize', 'MassAutoComplete'])
   };
 
   /************** MassAutoComplete functionality ************/
-
-  function suggest_ingred(term) {
+  $scope.suggestResults = [];
+  $scope.suggest_ingred = function(term) {
     var q = term.toLowerCase().trim();
     var autoResults = [];
     var fuzzyResults = fuzzySearch
@@ -163,11 +164,13 @@ angular.module('calculator.search', ['ngSanitize', 'MassAutoComplete'])
 
     var noResult = [{label: "Can't find your ingredient? Try browsing by category.", value: ''}];
 
-    return uniqCombinedResults.length === 0 ? noResult : uniqCombinedResults.slice(0,12).concat(noResult);
+   $scope.suggestResults = uniqCombinedResults.length === 0 ? noResult : uniqCombinedResults.slice(0,12).concat(noResult);
+   return $scope.suggestResults;
+    // return uniqCombinedResults.length === 0 ? noResult : uniqCombinedResults.slice(0,12).concat(noResult);
   }
 
   $scope.autocomplete_options = {
-    suggest: suggest_ingred
+    suggest: $scope.suggest_ingred
   };
 
   $scope.getAllIngreds();
