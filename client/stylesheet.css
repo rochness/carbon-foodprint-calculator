@@ -18,8 +18,12 @@ h1{
 h2{
 	margin-top: 0;
 	padding-top:0;
-	font-size: 20px;
-	text-align: left;
+	font-size: 16px;
+	text-align: center;
+}
+
+.sub_header {
+	font-style: italic;
 }
 
 h3{
@@ -30,7 +34,9 @@ h3{
 	border-bottom-color: gray;
 	padding-bottom: 5px;
 }
-
+a {
+	cursor: pointer;
+}
 h4{
 	font-size: 20px;
 	text-align: left;
@@ -107,6 +113,7 @@ input, button {
 
 .calc_header{
 	padding-top: 0;
+	padding-left: 0;
 	padding-bottom: 15px;
 	border-bottom-style: solid;
 	border-bottom-width: 1px;
@@ -345,9 +352,14 @@ table {
 	position: relative;
 	padding-left: 8px;
 }
+
 .modal-dialog {
 	width: 500px;
 	margin: 200px auto;
+}
+
+.description-dialog {
+	width: 700px;
 }
 .modalText {
 	position: relative;

@@ -1,9 +1,27 @@
+<div class-"container">
 <div class= "row" id="wrapper">
-  <div class = "leftContainer col-sm-7">
-    <div class="calc_header">
-      <h2>Intro Text......</h2>
-      <span> asasdsadOrum rem. Nequi dollendae vel iliscimi, cus molupta sperupt aspidem explaud iciditi sedArum sita des aute cor andi ut magnate ndenda velenis nostrume aut pro ommoluptati quiam
+  <div class = "col-xs-12 col-sm-12 col-md-7 leftContainer">
+    <div class="calc_header col-sm-12">
+      <span> Use this calculator to determine the foodprint of a single recipe, an entire menu or a year's supply of ice cream. Simply start by typing the name of an ingredient to search within our database or choose one from the categories below.  <a data-toggle="modal" data-target="#introDescription">Learn more about how we developed this tool and how we see it being used. </a>
       </span>
+      <div class="modal fade" id="introDescription" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog description-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" style="font-size: 30px;">&times;</span></button>
+              <h4 class="modal-title" id="myModalLabel">About the Carbon Foodprint Calculator</h4>
+            </div>
+            <div class="modal-body">
+            <p> This is a simple tool developed by Zero Foodprint in conjunction with <a target='#' href="http://www.sw-consulting.co.uk/"> Small World Consulting</a> that allows chefs, cooks and diners to better understand the carbon footprint of different kinds of ingredients. This calculator is not exact. It merely provides a broad understanding of the differences in orders of magnitude of the impact that varying ingredients and modes of transport have. </p>
+            <p>The data was collected by Small World as part of a UK based study and has been calibrated for a US market. There will necessarily be differences based on what part of the world you live in, to say the least. In reality, the footprint of an ingredient will vary considerably based on farming practice, terroir, or maybe from plant to plant within in the same crop. The purpose of us providng this data is not to focus on the exact difference between the impact of apples and oranges, but rather to compare apples to ribeye steaks, or perhaps even pork chops to ribeye steaks. Knowing is half the battle.</p>
+            <p><strong>To Use</strong></p>
+            <p> You could use the Foodprint Calculator to determine the foodprint of a single recipe, an entire menu or a year's supply of ice cream. </p>
+            <p> Simply start typing the name of an ingredient to select from a list of suggestions from within the database. Alternately, choose your ingredient from the categories below. More specific choices will be presented wherever the data set permits. Sorry, the list is not exhaustive but you can use your judgement on substituting a comparable ingredient. </p>
+            <p> Next, specify the amount of the ingredient and the mode of transport. Your ingredient will be added to your list where we keep a running total of the carbon footprint. You can always click the edit button to change the details for specific ingredients </p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
     <div class = "select_ingreds">
       <div ng-switch="selected">
@@ -18,7 +36,17 @@
       </div>
     </div>
   </div>
-  <div class ="rightContainer col-sm-5">
+  <div class ="col-xs-12 col-sm-12  col-md-5 rightContainer">
     <div ui-view="calculateIngredients"></div>
   </div>
 </div>
+</div>
+<!-- This is a simple tool developed by Zero Foodprint in conjunction with Small World Consulting (link to http://www.sw-consulting.co.uk/) that allows chefs, cooks and diners to get a clearer understanding of the carbon footprint of different kinds of ingredients. This calculator is not exact. It merely provides a broad understanding of the differences in the orders of magnitude of the impact of varying ingredients and modes of transport.
+
+The data was collected by Small World as part of a UK based study and calibrated for a US market. There will necessarily be differences based on what part of the world you live in, to say the least. In reality the footprint of an ingredient will vary considerably based on farming practice, terroir, or maybe even fruit from two different trees. The purpose is not to zero in on the exact difference between apples and oranges, but rather to compare apples to ribeye steaks, or perhaps even pork chops to ribeye steaks. Knowing is half the battle.
+
+To Use
+
+Simply start typing the name of an ingredient to select from a list of suggestions from within the database. Alternately, choose your ingredient from the categories below. More specific choices will be presented wherever the data set permits. Sorry, the list is not exhaustive but you can use your judgement on substituting a comparable ingredient.
+
+Next, specify the amount of the ingredient and the mode of transport and add it to your list. You could use the Foodprint Calculator to determine the foodprint of a recipe or a year's supply of ice cream. -->

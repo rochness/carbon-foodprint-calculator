@@ -129,11 +129,11 @@ angular.module('calculator.search', ['ngSanitize', 'MassAutoComplete'])
             caseSensitive: false,
             threshold: 0.3
           });
-
         console.log('1: this line gets called after receiving the response data in getAllIngreds', ingreds);
       }).catch(function(err) {
         console.error(err);
       });
+
     console.log('2: last line in getAllIngreds function is called');
   };
 
