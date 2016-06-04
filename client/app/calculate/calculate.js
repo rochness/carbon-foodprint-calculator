@@ -2,11 +2,8 @@ angular.module('calculator.userIngreds', [])
 
 .controller('UserIngredController', function ($scope, Ingredients) {
 
-  //$scope.Ingredients = Ingredients;
-
   $scope.getUserIngreds = function(){
     return Ingredients.getUserIngreds();
-    console.log("user ingredients: ", $scope.ingredients);
   };
 
   $scope.$on('added-ingred', function(){
@@ -26,7 +23,6 @@ angular.module('calculator.userIngreds', [])
       "grams": (1/1000),
       "kilograms": 1
     }
-    // debugger;
     var qty = item.quantity;
     var emiss = item.ingredient.emissions;
     var modifier = item.transportModifier !== 'null' ? item.ingredient[item.transportModifier] + 1 : 1;

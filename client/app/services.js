@@ -2,10 +2,8 @@ angular.module('calculator.services', [])
 
 .factory('Ingredients', function ($http) {
   var fireBaseUrl = 'https://dazzling-inferno-125.firebaseio.com/results.json'
-
   var ingredDB = {};
   var userIngredients = {};
-
   var categories = [
     'Beef',
     'Lamb',
@@ -33,14 +31,13 @@ angular.module('calculator.services', [])
     if(ingredDB[name.toLowerCase()]){
       return ingredDB[name.toLowerCase()];
     } else {
-      console.log("Ingredient not in database");
+      // console.log("Ingredient not in database");
       return null;
     }
   };
 
   var addIngredient = function (ingred) {
     userIngredients[ingred.ingredient.name] = ingred;
-    // $rootScope.$broadcast('added-ingred');
 
   };
 

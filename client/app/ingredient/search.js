@@ -48,15 +48,12 @@ angular.module('calculator.search', ['ngSanitize', 'MassAutoComplete'])
   };
 
   $scope.toggleFound = function(isSubmitted, form, keyPressEvent){
-    // console.log('toggledFound called, isSubmitted: ' + isSubmitted + ' found: ' + $scope.found);
     if(keyPressEvent && keyPressEvent !== 13){
       if(isSubmitted && $scope.found === false) {
         $scope.found = true;
         form.$setPristine();
       } else if (isSubmitted && $scope.found === true) {
         $scope.found = false;
-      } else {
-        // $scope.found = false;
       }
     }
   };
@@ -76,11 +73,9 @@ angular.module('calculator.search', ['ngSanitize', 'MassAutoComplete'])
   }
 
   $scope.setIngred = function (ingred, isFormSubmitted, form) {
-    console.log('setIngred called');
     if(!ingred){
       $scope.item.ingredient = Ingredients.searchIngred($scope.input.value);
     } else {
-      console.log('ingredName: ', ingred);
       if(typeof ingred === 'string') {
         $scope.item.ingredient = Ingredients.searchIngred(ingred);
       } else {
@@ -90,7 +85,6 @@ angular.module('calculator.search', ['ngSanitize', 'MassAutoComplete'])
     if($scope.item.ingredient === null){
       $scope.toggleFound(isFormSubmitted, form);
     } else {
-      // $scope.toggleSelected();
       $scope.setAndEmitSelected(true);
       $scope.item.transportTypes = $scope.getTransportTypes($scope.item.ingredient);
       $rootScope.item = $scope.item;
@@ -106,7 +100,6 @@ angular.module('calculator.search', ['ngSanitize', 'MassAutoComplete'])
 
   $scope.addToList = function(isValidForm, form) {
     if(isValidForm) {
-      // console.log('added item to list ', $scope.item);
       Ingredients.addIngredient($scope.item);
       $scope.reset();
       form.$setPristine();
@@ -129,12 +122,9 @@ angular.module('calculator.search', ['ngSanitize', 'MassAutoComplete'])
             caseSensitive: false,
             threshold: 0.3
           });
-        console.log('1: this line gets called after receiving the response data in getAllIngreds', ingreds);
       }).catch(function(err) {
         console.error(err);
       });
-
-    console.log('2: last line in getAllIngreds function is called');
   };
 
   /************** MassAutoComplete functionality ************/
@@ -170,7 +160,6 @@ angular.module('calculator.search', ['ngSanitize', 'MassAutoComplete'])
 
    $scope.suggestResults = uniqCombinedResults.length === 0 ? noResult : uniqCombinedResults.slice(0,12).concat(noResult);
    return $scope.suggestResults;
-    // return uniqCombinedResults.length === 0 ? noResult : uniqCombinedResults.slice(0,12).concat(noResult);
   }
 
   $scope.autocomplete_options = {
